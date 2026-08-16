@@ -193,7 +193,7 @@ curl -sSIL --max-time 20 http://www.fciconvention.com/
 curl -sSIL --max-time 20 https://www.fciconvention.com/
 curl -sSIL --max-time 20 https://matthewjudy.github.io/fci-convention-website/
 curl -sSI --max-time 20 https://www.fciconvention.com/assets/speakers/daymond-john.jpg
-curl -sSI --max-time 20 https://www.fciconvention.com/assets/videos/fci-convention-2026-hero-720p.mp4
+curl -sSI --max-time 20 https://www.fciconvention.com/assets/videos/fci-convention-2026-hero-720p-optimized.mp4
 ```
 
 Expected final behavior:
@@ -275,7 +275,7 @@ Any future requirement for server-side form handling, authenticated attendee con
 
 ### Video and bandwidth
 
-The desktop hero video is approximately **17.15 MB**. The entire current asset set is approximately 21.92 MiB. The implementation avoids loading the hero video on mobile, for reduced-motion users, and for visitors with data-saving enabled, but the file remains the primary bandwidth risk.
+The optimized desktop hero video is **4,238,929 bytes (approximately 4.24 MB)**, a 75.3% reduction from the superseded 17.15 MB file. The entire current asset set is **12,880,653 bytes (approximately 12.28 MiB)**, 44.0% smaller than the prior asset tree despite adding responsive variants. The nine displayed gallery images have 480px, 960px, and 1440px WebP candidates totaling 2,320,676 bytes, and the hero poster is 279,206 bytes. The implementation selects an appropriate image candidate and avoids loading the hero video on mobile, for reduced-motion users, and for visitors with data-saving enabled. The video remains the largest single bandwidth risk.
 
 GitHub Pages documents a soft bandwidth limit of 100 GB per month. The expected franchisee audience is likely compatible with that limit, but a materially broader campaign or repeated uncached video traffic should trigger bandwidth review and potentially move the video to a dedicated media/CDN service.
 
