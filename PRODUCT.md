@@ -16,7 +16,7 @@ The site gathers the available convention information a franchisee needs, routes
 
 ## Positioning
 
-This is the operational registration home for the 2027 FCI Convention at Hard Rock Riviera Maya. Its role-specific registration paths, FCI event logistics, participation pricing, keynote information, hotel group link, and approved convention imagery are specific to this event and cannot be replaced with generic conference claims.
+This is the operational registration home for the 2027 FCI Convention at Hard Rock Riviera Maya. Its role-specific registration paths, FCI event logistics, participation pricing, keynote information, and hotel group link are specific to this event. Approved prior-convention imagery supplies authentic FCI atmosphere and cannot be replaced with generic conference claims.
 
 ## Operating Context
 
@@ -36,15 +36,17 @@ This is the operational registration home for the 2027 FCI Convention at Hard Ro
 - The early-bird deadline is currently published as October 16. Its year and exact boundary have not been verified and must not be invented.
 - Preserve the existing role-specific Jotform URLs, hotel group URL, event dates, fee amounts, policy language, and factual FAQ content unless an approved source changes them.
 - The page must remain useful without motion, hover, a configured email client, or a fast connection.
+- Routine raster imagery must be responsive and bandwidth-aware, with intrinsic dimensions and truthful `sizes`; full JPEG originals are reserved for explicit enlargement or fallback.
+- Fixed and sticky controls, full-bleed layouts, and essential content must respect device safe-area insets.
 
 ## Brand Commitments
 
-Preserve the Floor Coverings International name, existing event identity, real approved 2026 convention photography, Hard Rock Riviera Maya imagery, and verified Daymond John keynote content. The experience should feel like a registration-first blend of operational confidence and authentic event anticipation, not a generic promotional redesign.
+Preserve the Floor Coverings International name, existing event identity, real approved prior-convention photography, Hard Rock Riviera Maya imagery, and verified Daymond John keynote content. The experience should feel like a registration-first blend of operational confidence and authentic event anticipation, not a generic promotional redesign.
 
 ## Evidence on Hand
 
 - Incumbent page copy and links in `index.html`; fee, deadline, and policy authority still require the production approval recorded below.
-- Convention photography in `assets/convention-photos/`.
+- Approved prior-convention photography in `assets/convention-photos/`; public labels and alternative text describe visible scenes year-neutrally unless a capture year is materially relevant and independently verified.
 - Resort photography in `assets/hotel-photos/`.
 - Keynote image in `assets/speakers/daymond-john.jpg`.
 - Convention video in `assets/videos/fci-convention-2026-hero-720p.mp4`.
@@ -61,4 +63,4 @@ Preserve the Floor Coverings International name, existing event identity, real a
 
 ## Accessibility & Inclusion
 
-The primary journey must support keyboard and screen-reader navigation, visible focus, meaningful headings and alternative text, WCAG 2.2 AA text contrast, 44 × 44 CSS-pixel primary touch targets where practical, 200% zoom/reflow, reduced motion, and layouts from 320px mobile through wide desktop. Important meaning and content may not depend on hover, blur removal, color perception, or animation.
+The primary journey must support keyboard and screen-reader navigation, visible focus, meaningful headings and alternative text, WCAG 2.2 AA text contrast, 44 × 44 CSS-pixel primary touch targets where practical, 200% zoom/reflow, reduced motion, and layouts from 320px mobile through wide desktop. Focus indicators maintain at least 3:1 non-text contrast against their adjacent surface. Motion never lowers readable or interactive content below WCAG AA at any intermediate frame, and reduced motion keeps the same state and hierarchy without movement. Important meaning and content may not depend on hover, blur removal, color perception, or animation.
