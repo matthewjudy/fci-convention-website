@@ -109,12 +109,6 @@ typography:
     fontWeight: 700
     lineHeight: 1.45
     letterSpacing: "normal"
-  journey-locator:
-    fontFamily: "Aptos, 'Segoe UI', Arial, sans-serif"
-    fontSize: "12px"
-    fontWeight: 950
-    lineHeight: 1.2
-    letterSpacing: "0.08em"
 rounded:
   compact: "4px"
   standard: "8px"
@@ -257,7 +251,7 @@ The palette balances FCI authority with Riviera light: navy establishes trust, t
 
 ### Optical Support Steps
 
-The six core roles above remain the default hierarchy. A small set of content-specific optical steps supports the shipped composition: 42px compact display, 26–38px fee metrics, 24px ordered-step markers, 20px hero deck, 18px section leads, 17–21px contact emphasis, 15px table labels, and 13px captions/legal support. The 12px tracked journey locator is a deliberate exception for redundant wide-desktop wayfinding; it retains a 44px target and never replaces the primary navigation or action-label pattern.
+The six core roles above remain the default hierarchy. A small set of content-specific optical steps supports the shipped composition: 42px compact display, 26–38px fee metrics, 24px ordered-step markers, 20px hero deck, 18px section leads, 17–21px contact emphasis, 15px table labels, and 13px captions/legal support.
 
 **The Two-Voice Rule.** Serif type establishes destination and occasion; sans-serif type carries every task, status, and decision.
 

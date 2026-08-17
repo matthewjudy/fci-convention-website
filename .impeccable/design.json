@@ -151,8 +151,7 @@
       "lead": { "displayName": "Section Lead", "purpose": "Prominent section introductions and supporting emphasis." },
       "contact-emphasis": { "displayName": "Contact Emphasis", "purpose": "The visible convention contact address." },
       "table-label": { "displayName": "Table Label", "purpose": "Comparison-table column and row labels." },
-      "supporting": { "displayName": "Supporting Copy", "purpose": "Captions, fee timing, and footer or legal support." },
-      "journey-locator": { "displayName": "Journey Locator", "purpose": "Redundant wide-desktop wayfinding with a 44px target; not the primary action-label pattern." }
+      "supporting": { "displayName": "Supporting Copy", "purpose": "Captions, fee timing, and footer or legal support." }
     },
     "shadows": [
       { "name": "resting-card", "value": "0 12px 30px rgba(0, 0, 0, 0.08)", "purpose": "Low separation for pricing and content containers." },
