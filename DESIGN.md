@@ -14,10 +14,16 @@ colors:
   slate-copy: "#5d6770"
   clean-white: "#ffffff"
   quiet-divider: "#dfe4e2"
+  strong-divider: "#cdd9d6"
+  tab-divider: "#c4d7d6"
+  media-placeholder: "#d7e4e3"
+  accessible-focus-coral: "#cf4b36"
   attendance-notice: "#fff3ee"
   policy-ink: "#623126"
   corporate-footer-navy: "#1c294a"
   corporate-link-cyan: "#4bc5dc"
+  corporate-footer-copy: "#d8e7ef"
+  corporate-link-active: "#75d9e9"
 typography:
   display:
     fontFamily: "Georgia, 'Times New Roman', serif"
@@ -55,6 +61,60 @@ typography:
     fontWeight: 950
     lineHeight: 1.2
     letterSpacing: "0.12em"
+  display-compact:
+    fontFamily: "Georgia, 'Times New Roman', serif"
+    fontSize: "42px"
+    fontWeight: 700
+    lineHeight: 1.04
+    letterSpacing: "normal"
+  metric:
+    fontFamily: "Georgia, 'Times New Roman', serif"
+    fontSize: "clamp(26px, 4vw, 38px)"
+    fontWeight: 900
+    lineHeight: 1
+    letterSpacing: "normal"
+  step-marker:
+    fontFamily: "Georgia, 'Times New Roman', serif"
+    fontSize: "24px"
+    fontWeight: 900
+    lineHeight: 1
+    letterSpacing: "normal"
+  hero-deck:
+    fontFamily: "Aptos, 'Segoe UI', Arial, sans-serif"
+    fontSize: "20px"
+    fontWeight: 400
+    lineHeight: 1.55
+    letterSpacing: "normal"
+  lead:
+    fontFamily: "Aptos, 'Segoe UI', Arial, sans-serif"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.55
+    letterSpacing: "normal"
+  contact-emphasis:
+    fontFamily: "Aptos, 'Segoe UI', Arial, sans-serif"
+    fontSize: "clamp(17px, 2.4vw, 21px)"
+    fontWeight: 900
+    lineHeight: 1.4
+    letterSpacing: "normal"
+  table-label:
+    fontFamily: "Aptos, 'Segoe UI', Arial, sans-serif"
+    fontSize: "15px"
+    fontWeight: 900
+    lineHeight: 1.2
+    letterSpacing: "normal"
+  supporting:
+    fontFamily: "Aptos, 'Segoe UI', Arial, sans-serif"
+    fontSize: "13px"
+    fontWeight: 700
+    lineHeight: 1.45
+    letterSpacing: "normal"
+  journey-locator:
+    fontFamily: "Aptos, 'Segoe UI', Arial, sans-serif"
+    fontSize: "12px"
+    fontWeight: 950
+    lineHeight: 1.2
+    letterSpacing: "0.08em"
 rounded:
   compact: "4px"
   standard: "8px"
@@ -127,7 +187,7 @@ components:
 
 The experience should feel like arriving at a well-run FCI registration desk set inside the Riviera destination: unmistakably branded, calm under pressure, and warm enough to build anticipation. Operational truth leads every composition, while approved photography and the sunlit accent palette keep the page from feeling administrative.
 
-The system pairs a structured navy frame with warm paper surfaces, decisive lime actions, accessible teal wayfinding, and restrained coral signals. Real event and resort imagery supplies atmosphere; the interface supplies sequence, recovery, and confidence. It is a registration tool with hospitality, not a generic conference template.
+The system pairs a structured navy frame with warm paper surfaces, decisive lime actions, accessible teal wayfinding, and restrained coral signals. Verified prior-convention and resort imagery supplies atmosphere; the interface supplies sequence, recovery, and confidence. It is a registration tool with hospitality, not a generic conference template.
 
 **Key Characteristics:**
 
@@ -159,7 +219,9 @@ The palette balances FCI authority with Riviera light: navy establishes trust, t
 
 - **Corporate Footer Navy:** The footer's distinct corporate FCI surface.
 - **Corporate Link Cyan:** Footer underlines, separators, and linked-state details.
+- **Corporate Footer Copy / Active Link:** Quiet footer text and the brighter hover/focus state used only on the corporate navy surface.
 - **Attendance Notice / Policy Ink:** A paired warm notice surface for fee and attendance obligations.
+- **Accessible Focus Coral:** The darker coral ring used on white, paper, sky, notice, and form surfaces.
 
 ### Neutral
 
@@ -168,10 +230,14 @@ The palette balances FCI authority with Riviera light: navy establishes trust, t
 - **Slate Copy:** Secondary explanatory text that remains WCAG AA on white and paper.
 - **Clean White:** Cards, form surfaces, and inverse text.
 - **Quiet Divider:** Low-emphasis rules and table separation.
+- **Strong Divider / Tab Divider:** Stronger boundaries for forms, cards, and the registration tab rail.
+- **Media Placeholder:** A neutral image-loading and fallback surface.
 
 **The Registration Color Rule.** Lime identifies the next primary action; do not spend it on general decoration.
 
-**The Signal Rule.** Coral may mark selection, focus, or policy emphasis, but normal-size text on light surfaces uses the darker teal, navy, or policy-ink role.
+**The Signal Rule.** Warm Signal Coral marks selection and policy emphasis. Accessible Focus Coral marks focus on light surfaces; Warm Signal Coral or white may mark focus on navy and photographic surfaces. Normal-size text on light surfaces uses the darker teal, navy, or policy-ink role.
+
+**The Focus Contrast Rule.** A focus indicator must contrast at least 3:1 with the immediately adjacent surface and may not rely on color alone. The light-surface focus coral is `#cf4b36`; it clears 3:1 against white, paper, Riviera Sky, registration navy, and midnight navy.
 
 ## Typography
 
@@ -189,6 +255,10 @@ The palette balances FCI authority with Riviera light: navy establishes trust, t
 - **Body:** Practical reading copy with a 65–75 character target measure for instructions and policy context.
 - **Label:** Strong navigation, button, fact, date, and state language. Increased tracking is reserved for compact metadata, not paragraphs.
 
+### Optical Support Steps
+
+The six core roles above remain the default hierarchy. A small set of content-specific optical steps supports the shipped composition: 42px compact display, 26–38px fee metrics, 24px ordered-step markers, 20px hero deck, 18px section leads, 17–21px contact emphasis, 15px table labels, and 13px captions/legal support. The 12px tracked journey locator is a deliberate exception for redundant wide-desktop wayfinding; it retains a 44px target and never replaces the primary navigation or action-label pattern.
+
 **The Two-Voice Rule.** Serif type establishes destination and occasion; sans-serif type carries every task, status, and decision.
 
 **The Sentence Rule.** Fragments and interface labels use Title Case; complete sentences retain sentence case and normal punctuation.
@@ -203,6 +273,10 @@ Intentional horizontal movement is confined to the resort-photo rail; the docume
 
 **The Operational-First Rule.** Fees, role selection, registration recovery, and hotel follow-through appear before galleries or optional sponsorship details.
 
+**The Safe-Area Rule.** Full-bleed decorative media may extend into device insets. Text, controls, dialog actions, sticky navigation, and fixed controls use the greater of the base gutter or the relevant `env(safe-area-inset-*)` clearance and remain inside the safe content box.
+
+**The Responsive Media Rule.** Routine images use available 480/960/1440 WebP candidates, intrinsic dimensions, and a `sizes` expression that mirrors the rendered column. Full JPEGs are fallback or explicit-enlargement sources. Faces, logos, and meaningful action remain inside the crop shared by shipped aspect ratios.
+
 ## Elevation & Depth
 
 The system uses a restrained hybrid of tonal layering and neutral elevation. Most surfaces are flat at rest with a quiet border; cards, modals, and the horizontal resort gallery use soft black shadows only where separation or interaction benefits from depth. The solid hero fact panel remains flat and readable independently of the video.
@@ -212,10 +286,13 @@ The system uses a restrained hybrid of tonal layering and neutral elevation. Mos
 - **Resting Card:** A low, neutral shadow for pricing and content containers.
 - **Interactive Lift:** A stronger neutral shadow paired with a small upward transform on hover/focus-capable devices.
 - **Protected Overlay:** The deepest neutral shadow for modal and lightbox content over a dark backdrop.
+- **Intentional Variants:** Compact resting `0 8px 22px rgba(0,0,0,.10)`, focus-within `0 12px 30px rgba(0,0,0,.12)`, resting media `0 18px 48px rgba(0,0,0,.14)`, portrait lift `0 14px 34px rgba(0,0,0,.20)`, button lift `0 16px 32px rgba(0,0,0,.22)`, gallery lift `0 28px 70px rgba(0,0,0,.28)`, floating lift `0 18px 42px rgba(0,0,0,.28)`, and lightbox overlay `0 28px 90px rgba(0,0,0,.42)`. These are a closed neutral opacity ladder, not permission for arbitrary shadows.
 
 **The Neutral Elevation Rule.** Shadows are black with transparency and a visible vertical offset; brand-colored glows and zero-offset halos do not belong in this system.
 
 **The Reduced-Motion Rule.** Reduced motion keeps state, focus, and hierarchy visible while removing scroll animation, image scaling, lifts, and transition timing.
+
+**The Motion Contrast Rule.** Scroll choreography may transform decorative media or reposition an already-visible surface, but it never fades or filters text and controls that remain readable or interactive. Every intermediate frame preserves WCAG AA; reduced motion is fully legible and immediate.
 
 ## Shapes
 
@@ -231,7 +308,7 @@ Borders are quiet and usually one pixel. Selected tabs use an inset bottom bar, 
 
 - **Shape:** Compact rectangular controls with the standard radius and a minimum 44px interaction height.
 - **Primary:** Registration lime over navy, with strong sans-serif label weight.
-- **Hover / Focus:** Midnight navy with white text, a coral border, visible external focus outline, and a slight lift when motion is allowed.
+- **Hover / Focus:** Midnight navy with white text, a coral border, a contrast-safe external focus outline, and a slight lift when motion is allowed.
 - **Secondary:** Transparent inverse treatment on dark photographic or navy surfaces.
 - **Text:** Underlined accessible-action teal with no elevation; this is the embedded-form fallback and quiet-action pattern.
 
@@ -260,7 +337,7 @@ The hero fact panel is a solid Midnight Lobby Navy surface with lime labels and 
 
 ### Galleries and Lightbox
 
-Routine gallery views use responsive WebP candidates and preserve meaningful alternative text. Hotel thumbnails may open the full approved JPEG inside a named native dialog. Hover scaling is modest, contained, and absent under reduced motion or non-hover input.
+Routine gallery views use responsive WebP candidates and preserve meaningful alternative text. Hotel thumbnails may open the full approved JPEG inside a named native dialog. Hover scaling is modest, contained, and absent under reduced motion or non-hover input. Convention photography is approved prior-event proof: public headings, captions, and alternative text describe visible scenes year-neutrally unless a capture year is necessary and independently verified. It must never imply that prior-event imagery depicts the upcoming 2027 convention.
 
 ### Footer
 
@@ -271,7 +348,7 @@ The footer follows the corporate FCI hierarchy: official identity and independen
 ### Do:
 
 - **Do** lead visitors from fee understanding to one form per attendee, then to the separate hotel step.
-- **Do** use the approved FCI tertiary logo and approved event, speaker, and resort imagery at their natural aspect ratios.
+- **Do** use the approved FCI tertiary logo, verified prior-convention imagery, and approved speaker and resort imagery at their natural aspect ratios.
 - **Do** keep instructional copy within the 65–75 character reading measure and maintain document-level reflow at every supported width.
 - **Do** keep direct-form fallbacks visible before cross-origin embeds and make loading, failure, retry, and no-JavaScript states truthful.
 - **Do** preserve 44px controls, visible focus, WCAG AA text contrast, and the reduced-motion alternative in every new component.
@@ -284,4 +361,5 @@ The footer follows the corporate FCI hierarchy: official identity and independen
 - **Don't** use lime as ambient decoration, coral as normal-size text on light surfaces, or brand-colored shadows as depth.
 - **Don't** add autoplaying or eagerly loaded video; playback remains explicit, desktop-only, Save-Data-aware, and disabled for reduced motion.
 - **Don't** place essential fees, role choice, recovery, or hotel continuity behind decorative proof or a gallery.
+- **Don't** assign a capture year to convention photography from a filename, caption history, or assumption; use a year only when it is materially relevant and independently verified.
 - **Don't** introduce generic conference claims, fabricated testimonials, decorative icons, gradients in text, or a dark-mode contract without product approval.

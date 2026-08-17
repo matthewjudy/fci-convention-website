@@ -19,13 +19,25 @@
         --teal-dark: #00636a;
         --lime: #8cc63f;
         --coral: #e95f45;
+        --accessible-focus-coral: #cf4b36;
         --sky: #d9f1f3;
         --paper: #fbfaf6;
         --white: #ffffff;
         --line: #dfe4e2;
+        --line-strong: #cdd9d6;
+        --tab-divider: #c4d7d6;
+        --media-placeholder: #d7e4e3;
+        --footer-ink: #d8e7ef;
+        --footer-link-active: #75d9e9;
+        --shadow-rest: 0 12px 30px rgba(0, 0, 0, 0.08);
+        --shadow-lift: 0 20px 42px rgba(0, 0, 0, 0.16);
+        --shadow-overlay: 0 28px 80px rgba(0, 0, 0, 0.34);
         --shadow: 0 18px 48px rgba(0, 0, 0, 0.14);
         --radius: 8px;
-        --header-height: 70px;
+        --nav-height: 70px;
+        --header-height: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+        --safe-dialog-inline: max(16px, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+        --safe-dialog-block: max(16px, env(safe-area-inset-top, 0px), env(safe-area-inset-bottom, 0px));
       }
 
       * {
@@ -71,14 +83,14 @@
 
       a:focus-visible,
       button:focus-visible {
-        outline: 3px solid var(--coral);
+        outline: 3px solid var(--accessible-focus-coral);
         outline-offset: 3px;
       }
 
       .skip-link {
         position: absolute;
-        top: 12px;
-        left: 12px;
+        top: max(12px, env(safe-area-inset-top, 0px));
+        left: max(12px, env(safe-area-inset-left, 0px));
         z-index: 20;
         transform: translateY(-140%);
         border-radius: var(--radius);
@@ -116,8 +128,11 @@
       }
 
       .wrap {
-        width: min(1180px, calc(100% - 40px));
+        width: 100%;
+        max-width: 1220px;
         margin: 0 auto;
+        padding-right: max(20px, env(safe-area-inset-right, 0px));
+        padding-left: max(20px, env(safe-area-inset-left, 0px));
       }
 
       .topbar {
@@ -125,6 +140,7 @@
         top: 0;
         z-index: 10;
         border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        padding-top: env(safe-area-inset-top, 0px);
         background: rgba(11, 34, 53, 0.97);
         backdrop-filter: blur(12px);
       }
@@ -132,7 +148,7 @@
       .nav {
         position: relative;
         display: flex;
-        min-height: var(--header-height);
+        min-height: var(--nav-height);
         align-items: center;
         justify-content: space-between;
         gap: 20px;
@@ -222,6 +238,106 @@
         color: var(--lime);
       }
 
+      .journey-seam {
+        position: fixed;
+        top: 50%;
+        left: max(18px, calc((100vw - 1180px) / 2 - 116px));
+        z-index: 8;
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-50%);
+      }
+
+      .journey-seam.is-visible {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .journey-seam ol {
+        position: relative;
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 10px 0;
+        list-style: none;
+      }
+
+      .journey-seam ol::before {
+        content: "";
+        position: absolute;
+        top: 30px;
+        bottom: 30px;
+        left: 10px;
+        width: 1px;
+        background: rgba(0, 127, 134, 0.42);
+      }
+
+      .journey-seam a {
+        position: relative;
+        display: grid;
+        min-height: 44px;
+        grid-template-columns: 21px auto;
+        gap: 8px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .journey-seam a::before {
+        content: "";
+        position: relative;
+        z-index: 1;
+        width: 9px;
+        height: 9px;
+        justify-self: center;
+        border: 2px solid var(--paper);
+        border-radius: 999px;
+        background: var(--teal);
+        outline: 1px solid rgba(0, 99, 106, 0.62);
+      }
+
+      .journey-seam a:hover,
+      .journey-seam a:focus-visible,
+      .journey-seam a[aria-current="location"] {
+        color: var(--navy);
+        opacity: 1;
+        transform: translateX(4px);
+      }
+
+      .journey-seam a[aria-current="location"]::before {
+        width: 13px;
+        height: 13px;
+        border-color: var(--white);
+        background: var(--coral);
+        outline-color: var(--coral);
+      }
+
+      .journey-seam.is-on-dark ol::before {
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      .journey-seam.is-on-dark a {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .journey-seam.is-on-dark a:hover,
+      .journey-seam.is-on-dark a:focus-visible,
+      .journey-seam.is-on-dark a[aria-current="location"] {
+        color: var(--white);
+      }
+
+      .journey-seam.is-on-dark a::before {
+        border-color: var(--navy);
+        outline-color: rgba(255, 255, 255, 0.72);
+      }
+
       .hero {
         position: relative;
         overflow: hidden;
@@ -244,15 +360,27 @@
         position: absolute;
         inset: 0;
         z-index: 0;
-        background:
-          url("assets/convention-photos/convention-networking-1600.webp") center / cover,
-          var(--deep-navy);
+        overflow: hidden;
+        background: var(--deep-navy);
       }
 
+      .hero-poster,
+      .hero-poster img,
       .hero-video video {
+        position: absolute;
+        inset: 0;
+        display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+
+      .hero-poster {
+        z-index: 0;
+      }
+
+      .hero-video video {
+        z-index: 1;
         filter: saturate(0.82) contrast(1.08);
       }
 
@@ -278,8 +406,8 @@
 
       .video-toggle {
         position: absolute;
-        right: max(20px, calc((100% - 1180px) / 2));
-        bottom: 34px;
+        right: max(20px, env(safe-area-inset-right, 0px), calc((100% - 1180px) / 2));
+        bottom: max(34px, env(safe-area-inset-bottom, 0px));
         z-index: 2;
         width: 44px;
         height: 44px;
@@ -339,6 +467,7 @@
       h2 {
         font-family: Georgia, "Times New Roman", serif;
         line-height: 1.04;
+        text-wrap: balance;
       }
 
       h1 {
@@ -479,7 +608,16 @@
 
       .section-head {
         max-width: 72ch;
+        margin-right: auto;
         margin-bottom: 30px;
+        margin-left: auto;
+        text-align: center;
+      }
+
+      .section-head .lead {
+        max-width: 65ch;
+        margin-right: auto;
+        margin-left: auto;
       }
 
       .lead {
@@ -494,10 +632,10 @@
       .card,
       .form-shell,
       .event-row {
-        border: 1px solid #cdd9d6;
+        border: 1px solid var(--line-strong);
         border-radius: var(--radius);
         background: var(--white);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-rest);
       }
 
       .card:hover,
@@ -505,7 +643,7 @@
       .event-row:hover,
       .event-row:focus-within {
         border-color: rgba(0, 127, 134, 0.55);
-        box-shadow: 0 20px 42px rgba(0, 0, 0, 0.16);
+        box-shadow: var(--shadow-lift);
         transform: translateY(-4px);
       }
 
@@ -524,15 +662,44 @@
       }
 
       .fine {
-        font-size: 13px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .pricing-note-lead {
+        display: grid;
+        max-width: 68ch;
+        gap: 8px;
+        margin: 24px auto 12px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      .pricing-note-lead .pricing-note-primary {
+        color: var(--navy);
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 1.4;
+      }
+
+      .pricing-note-lead .pricing-note-secondary {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .pricing-note-lead a {
+        color: var(--teal-dark);
+        font-size: inherit;
+        font-weight: 900;
+        text-underline-offset: 3px;
       }
 
       .pricing-comparison {
         overflow: hidden;
-        border: 1px solid #cdd9d6;
+        border: 1px solid var(--line-strong);
         border-radius: var(--radius);
         background: var(--white);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-rest);
       }
 
       .pricing-comparison table {
@@ -586,21 +753,44 @@
         font-weight: 700;
       }
 
-      .policy-note {
-        margin-top: 22px;
-        border: 1px solid rgba(233, 95, 69, 0.32);
-        border-radius: var(--radius);
-        padding: 18px 20px;
-        background: #fff3ee;
-        color: #623126;
+      .policy-note-disclosure {
+        max-width: 72ch;
+        margin: 24px auto 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: transparent;
+        color: var(--muted);
       }
 
-      .policy-note h3 {
-        color: #623126;
+      .policy-note-disclosure summary {
+        min-height: 44px;
+        padding: 11px 0;
+        color: var(--teal-dark);
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 900;
+        line-height: 1.4;
       }
 
-      .policy-note p:last-child {
-        margin-bottom: 0;
+      .policy-note-disclosure summary::marker {
+        color: var(--muted);
+      }
+
+      .policy-note-disclosure summary:focus-visible {
+        outline: 3px solid var(--accessible-focus-coral);
+        outline-offset: 3px;
+      }
+
+      .policy-note-disclosure p {
+        margin: 0;
+        padding: 0 0 14px 18px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .policy-note-disclosure strong {
+        color: var(--navy);
       }
 
       .journey-steps {
@@ -650,13 +840,11 @@
       .form-shell {
         overflow: hidden;
         max-width: 1100px;
+        margin-right: auto;
+        margin-left: auto;
       }
 
-      #register .handoff-note,
-      #register > .wrap > .fine,
-      .registration-intro,
-      #pricing > .wrap > .fine,
-      #pricing .policy-note {
+      .registration-intro {
         max-width: 72ch;
       }
 
@@ -664,13 +852,26 @@
         margin-bottom: 16px;
       }
 
+      .registration-guidance {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 18px;
+        align-items: stretch;
+        padding: 24px 28px 0;
+      }
+
       .registration-briefing {
-        max-width: 72ch;
         border: 1px solid rgba(233, 95, 69, 0.32);
         border-radius: var(--radius);
         padding: 16px 18px;
         background: #fff3ee;
         color: #623126;
+      }
+
+      .registration-guidance .registration-briefing,
+      .registration-guidance .handoff-note {
+        height: 100%;
+        margin: 0;
       }
 
       .registration-briefing p {
@@ -694,7 +895,7 @@
       .tabs {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        border-bottom: 1px solid #c4d7d6;
+        border-bottom: 1px solid var(--tab-divider);
         background: #dbeeee;
       }
 
@@ -738,7 +939,9 @@
 
       .registration-card {
         display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 18px;
+        align-items: start;
       }
 
       .registration-intro {
@@ -749,11 +952,65 @@
         color: var(--muted);
       }
 
+      .registration-card > .registration-actions {
+        justify-content: flex-end;
+      }
+
+      .embedded-form-disclosure {
+        grid-column: 1 / -1;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #f5fbfb;
+      }
+
+      .embedded-form-disclosure > summary {
+        min-height: 72px;
+        padding: 15px 20px;
+        color: var(--navy);
+        cursor: pointer;
+      }
+
+      .embedded-form-disclosure > summary::marker {
+        color: var(--coral);
+      }
+
+      .embedded-form-disclosure > summary:hover,
+      .embedded-form-disclosure > summary:focus-visible,
+      .embedded-form-disclosure[open] > summary {
+        background: var(--sky);
+        color: var(--deep-navy);
+      }
+
+      .embedded-form-disclosure > summary:focus-visible {
+        outline: 3px solid var(--accessible-focus-coral);
+        outline-offset: -3px;
+      }
+
+      .embedded-form-title {
+        font-size: 16px;
+        font-weight: 950;
+      }
+
+      .embedded-form-hint {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .embedded-form-disclosure .jotform-frame {
+        border: 0;
+        border-top: 1px solid var(--line);
+        border-radius: 0;
+      }
+
       .jotform-frame {
         position: relative;
         overflow: hidden;
         min-height: 560px;
-        border: 1px solid #cdd9d6;
+        border: 1px solid var(--line-strong);
         border-radius: var(--radius);
         background: #f5fbfb;
       }
@@ -825,14 +1082,6 @@
         color: var(--navy);
       }
 
-      .form-shell > .handoff-note {
-        margin: 24px 28px 0;
-      }
-
-      .form-shell > .registration-briefing {
-        margin: 24px 28px 0;
-      }
-
       .handoff-note h3 {
         margin: 0;
       }
@@ -876,15 +1125,14 @@
         outline-offset: 3px;
       }
 
-      .sponsorship-card,
-      .completion-checklist {
+      .sponsorship-card {
         max-width: 1100px;
         margin-top: 28px;
-        border: 1px solid #cdd9d6;
+        border: 1px solid var(--line-strong);
         border-radius: var(--radius);
         padding: 24px;
         background: var(--white);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-rest);
       }
 
       .sponsorship-summary {
@@ -921,63 +1169,13 @@
         font-weight: 950;
       }
 
-      .sponsorship-content > p,
-      .completion-checklist > p {
+      .sponsorship-content > p {
         max-width: 72ch;
         color: var(--muted);
       }
 
       .sponsorship-card .registration-actions {
         margin-bottom: 0;
-      }
-
-      .completion-checklist {
-        max-width: 72ch;
-      }
-
-      .completion-checklist legend {
-        padding: 0 6px;
-        color: var(--navy);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 21px;
-        font-weight: 900;
-      }
-
-      .progress-list {
-        display: grid;
-        gap: 6px;
-        margin: 14px 0;
-      }
-
-      .progress-list label {
-        display: flex;
-        min-height: 44px;
-        align-items: flex-start;
-        gap: 10px;
-        padding-block: 9px;
-        color: var(--navy);
-        font-weight: 800;
-      }
-
-      .progress-list input {
-        width: 20px;
-        height: 20px;
-        flex: 0 0 auto;
-        margin: 2px 0 0;
-        accent-color: var(--teal);
-      }
-
-      .progress-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .progress-status {
-        min-height: 1.55em;
-        margin: 12px 0 0;
-        color: var(--teal-dark);
-        font-weight: 800;
       }
 
       .contact-section {
@@ -988,10 +1186,15 @@
         display: grid;
         gap: 18px;
         max-width: 72ch;
+        margin-right: auto;
+        margin-left: auto;
       }
 
       .contact-layout .section-head {
+        margin-right: 0;
         margin-bottom: 0;
+        margin-left: 0;
+        text-align: left;
       }
 
       .contact-card {
@@ -1049,6 +1252,8 @@
         display: grid;
         max-width: 72ch;
         gap: 30px;
+        margin-right: auto;
+        margin-left: auto;
       }
 
       .faq-group h3 {
@@ -1056,7 +1261,7 @@
       }
 
       .faq-item {
-        border: 1px solid #cdd9d6;
+        border: 1px solid var(--line-strong);
         border-radius: var(--radius);
         background: var(--white);
         box-shadow: none;
@@ -1082,7 +1287,7 @@
       }
 
       .faq-item summary:focus-visible {
-        outline: 3px solid var(--coral);
+        outline: 3px solid var(--accessible-focus-coral);
         outline-offset: 3px;
       }
 
@@ -1167,8 +1372,8 @@
       }
 
       .speaker-modal {
-        width: min(900px, calc(100% - 32px));
-        max-height: calc(100dvh - 32px);
+        width: min(900px, calc(100% - var(--safe-dialog-inline) - var(--safe-dialog-inline)));
+        max-height: calc(100dvh - var(--safe-dialog-block) - var(--safe-dialog-block));
         border: 0;
         border-radius: var(--radius);
         padding: 0;
@@ -1185,11 +1390,11 @@
         display: grid;
         grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
         overflow: hidden;
-        max-height: calc(100dvh - 32px);
+        max-height: calc(100dvh - var(--safe-dialog-block) - var(--safe-dialog-block));
         border: 1px solid rgba(255, 255, 255, 0.45);
         border-radius: var(--radius);
         background: var(--white);
-        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+        box-shadow: var(--shadow-overlay);
       }
 
       .speaker-modal-media {
@@ -1229,8 +1434,8 @@
       }
 
       .image-lightbox {
-        width: min(1180px, calc(100% - 28px));
-        max-height: calc(100dvh - 28px);
+        width: min(1180px, calc(100% - var(--safe-dialog-inline) - var(--safe-dialog-inline)));
+        max-height: calc(100dvh - var(--safe-dialog-block) - var(--safe-dialog-block));
         border: 0;
         border-radius: var(--radius);
         padding: 0;
@@ -1258,7 +1463,7 @@
 
       .lightbox-frame img {
         width: 100%;
-        max-height: calc(100vh - 132px);
+        max-height: calc(100dvh - 132px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
         object-fit: contain;
       }
 
@@ -1305,14 +1510,18 @@
         margin: 0;
         border-radius: var(--radius);
         aspect-ratio: 1.2;
-        background: #d7e4e3;
+        background: var(--media-placeholder);
         box-shadow: var(--shadow);
       }
 
+      .hotel-photo picture,
       .hotel-photo img {
         display: block;
         width: 100%;
         height: 100%;
+      }
+
+      .hotel-photo img {
         object-fit: cover;
       }
 
@@ -1338,7 +1547,7 @@
         overflow: hidden;
         margin: 0;
         border-radius: var(--radius);
-        background: #d7e4e3;
+        background: var(--media-placeholder);
       }
 
       .photo-grid figure::after,
@@ -1463,10 +1672,43 @@
       }
 
       .final-cta {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
         text-align: center;
+        background: var(--deep-navy);
+      }
+
+      .final-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
         background:
-          linear-gradient(135deg, rgba(0, 127, 134, 0.94), rgba(11, 34, 53, 0.98)),
-          var(--deep-navy);
+          linear-gradient(135deg, rgba(0, 99, 106, 0.88), rgba(11, 34, 53, 0.97) 68%),
+          linear-gradient(0deg, rgba(11, 34, 53, 0.44), transparent 62%);
+        pointer-events: none;
+      }
+
+      .final-cta-media {
+        position: absolute;
+        inset: -10% 0;
+        z-index: 0;
+        display: block;
+        pointer-events: none;
+      }
+
+      .final-cta-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 42%;
+        filter: saturate(0.82) contrast(1.06);
+      }
+
+      .final-cta > .wrap {
+        position: relative;
+        z-index: 2;
       }
 
       .final-cta .section-head {
@@ -1495,6 +1737,168 @@
         padding-bottom: 64px;
       }
 
+      @keyframes form-workspace-arrive {
+        from {
+          clip-path: inset(0 0 16% 0 round 0 0 var(--radius) var(--radius));
+          opacity: 0.7;
+          transform: translateY(-10px);
+        }
+
+        to {
+          clip-path: inset(0 round 0 0 var(--radius) var(--radius));
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes lobby-window-pullback {
+        from {
+          transform: scale(1);
+        }
+
+        to {
+          transform: scale(0.965);
+        }
+      }
+
+      @keyframes lobby-desk-recede {
+        from {
+          transform: translateY(0) scale(1);
+        }
+
+        to {
+          transform: translateY(-34px) scale(0.985);
+        }
+      }
+
+      @keyframes riviera-aperture {
+        from {
+          transform: scale(1.08);
+        }
+
+        to {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes community-tableau-arrive {
+        from {
+          transform: scale(1.1);
+        }
+
+        to {
+          transform: scale(1.02);
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .journey-seam {
+          transition: opacity 180ms ease-out;
+        }
+
+        .embedded-form-disclosure.is-first-open > .jotform-frame {
+          animation: form-workspace-arrive 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+      }
+
+      @supports (view-transition-name: none) {
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+          animation: none;
+          mix-blend-mode: normal;
+        }
+
+        .tab[aria-selected="true"] {
+          view-transition-name: active-registration-role;
+        }
+
+        .form-panel.active .registration-card {
+          view-transition-name: registration-workspace;
+        }
+
+        ::view-transition-group(active-registration-role),
+        ::view-transition-group(registration-workspace) {
+          animation-duration: 340ms;
+          animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        ::view-transition-old(active-registration-role),
+        ::view-transition-new(active-registration-role),
+        ::view-transition-old(registration-workspace),
+        ::view-transition-new(registration-workspace) {
+          mix-blend-mode: normal;
+        }
+      }
+
+      @supports (animation-timeline: view()) {
+        @media (min-width: 901px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+          .hero {
+            view-timeline-name: --lobby-exit;
+            view-timeline-axis: block;
+          }
+
+          .hero-video,
+          .hero::before {
+            transform-origin: center;
+            animation: lobby-window-pullback 1ms linear both;
+            animation-timeline: --lobby-exit;
+            animation-range: exit 0% exit 92%;
+          }
+
+          .hero-inner {
+            transform-origin: center top;
+            animation: lobby-desk-recede 1ms linear both;
+            animation-timeline: --lobby-exit;
+            animation-range: exit 0% exit 72%;
+          }
+
+          #hotel {
+            view-timeline-name: --riviera-arrival;
+            view-timeline-axis: block;
+          }
+
+          #hotel .hotel-photo img {
+            animation: riviera-aperture 1ms linear both;
+            animation-timeline: --riviera-arrival;
+            animation-range: entry 8% cover 44%;
+          }
+
+          .final-cta {
+            view-timeline-name: --community-arrival;
+            view-timeline-axis: block;
+          }
+
+          .final-cta-media img {
+            animation: community-tableau-arrive 1ms linear both;
+            animation-timeline: --community-arrival;
+            animation-range: entry 0% cover 42%;
+          }
+        }
+      }
+
+      @media (min-width: 1440px) and (min-height: 680px) and (hover: hover) {
+        .journey-seam {
+          display: block;
+        }
+      }
+
+      @media (forced-colors: active) {
+        .journey-seam ol::before {
+          background: CanvasText;
+        }
+
+        .journey-seam a::before {
+          border-color: Canvas;
+          background: LinkText;
+          outline-color: LinkText;
+        }
+
+        .journey-seam a[aria-current="location"]::before {
+          background: Highlight;
+          outline-color: Highlight;
+        }
+      }
+
       @media (hover: none) {
         .hotel-photo,
         .photo-grid img,
@@ -1506,7 +1910,7 @@
       }
 
       .footer {
-        color: #d8e7ef;
+        color: var(--footer-ink);
         background: #1c294a;
       }
 
@@ -1577,7 +1981,7 @@
       .footer-nav a:focus-visible,
       .footer-legal a:hover,
       .footer-legal a:focus-visible {
-        color: #75d9e9;
+        color: var(--footer-link-active);
       }
 
       .footer-nav {
@@ -1608,7 +2012,7 @@
 
       .footer-legal p {
         margin: 0;
-        color: #d8e7ef;
+        color: var(--footer-ink);
         font-size: 13px;
       }
 
@@ -1624,8 +2028,8 @@
 
       .floating-top {
         position: fixed;
-        right: 18px;
-        bottom: 18px;
+        right: max(18px, env(safe-area-inset-right, 0px));
+        bottom: max(18px, env(safe-area-inset-bottom, 0px));
         z-index: 9;
         display: inline-flex;
         align-items: center;
@@ -1667,15 +2071,16 @@
 
       @media (max-width: 900px) {
         :root {
-          --header-height: 64px;
+          --nav-height: 64px;
         }
 
         .nav {
-          min-height: var(--header-height);
+          min-height: var(--nav-height);
           align-items: center;
           flex-direction: row;
           gap: 10px;
-          padding: 8px 0;
+          padding-top: 8px;
+          padding-bottom: 8px;
         }
 
         .nav-links {
@@ -1684,14 +2089,14 @@
           right: 0;
           left: 0;
           display: none;
-          max-height: calc(100dvh - var(--header-height) - 16px);
+          max-height: calc(100dvh - var(--header-height) - 16px - env(safe-area-inset-bottom, 0px));
           overflow-y: auto;
           grid-template-columns: 1fr;
           gap: 2px;
           border: 1px solid rgba(255, 255, 255, 0.16);
           border-top: 0;
           border-radius: 0 0 var(--radius) var(--radius);
-          padding: 10px;
+          padding: 10px max(10px, env(safe-area-inset-right, 0px)) 10px max(10px, env(safe-area-inset-left, 0px));
           background: rgba(11, 34, 53, 0.99);
           box-shadow: 0 22px 44px rgba(0, 0, 0, 0.34);
           white-space: normal;
@@ -1739,6 +2144,7 @@
         .journey-steps,
         .event-row,
         .event-row.featured-event,
+        .registration-guidance,
         .split,
         .speaker-modal-card {
           grid-template-columns: 1fr;
@@ -1769,12 +2175,21 @@
         }
 
         .speaker-modal-media img {
-          min-height: 220px;
-          max-height: 280px;
+          height: 100%;
+          min-height: 0;
+          max-height: none;
         }
 
         .speaker-modal-card {
+          grid-template-rows: auto auto;
           overflow-y: auto;
+          overscroll-behavior: contain;
+        }
+
+        .speaker-modal-media {
+          overflow: hidden;
+          height: clamp(180px, 32dvh, 280px);
+          min-height: 0;
         }
 
         .speaker-modal-content {
@@ -1809,6 +2224,14 @@
           grid-template-columns: 1fr;
         }
 
+        .registration-card {
+          grid-template-columns: 1fr;
+        }
+
+        .registration-card > .registration-actions {
+          justify-content: flex-start;
+        }
+
         .tab {
           border-right: 0;
           border-bottom: 1px solid var(--line);
@@ -1831,7 +2254,8 @@
 
       @media (max-width: 560px) {
         .wrap {
-          width: min(1180px, calc(100% - 28px));
+          padding-right: max(14px, env(safe-area-inset-right, 0px));
+          padding-left: max(14px, env(safe-area-inset-left, 0px));
         }
 
         h1 {
@@ -1848,7 +2272,7 @@
         }
 
         .fee-value {
-          font-size: 22px;
+          font-size: 21px;
         }
 
         .fee-timing {
@@ -1868,16 +2292,15 @@
           padding: 22px 16px;
         }
 
-        .form-shell > .handoff-note {
-          margin: 18px 16px 0;
+        .registration-guidance {
+          padding: 18px 16px 0;
         }
 
-        .form-shell > .registration-briefing {
-          margin: 18px 16px 0;
+        .embedded-form-disclosure > summary {
+          padding: 14px 16px;
         }
 
-        .sponsorship-card,
-        .completion-checklist {
+        .sponsorship-card {
           padding: 20px 16px;
         }
 
@@ -1950,7 +2373,7 @@
           display: block;
           margin-bottom: 2px;
           color: var(--navy);
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 900;
         }
 
@@ -1965,7 +2388,7 @@
         .nav-register,
         .menu-toggle {
           padding-inline: 10px;
-          font-size: 13px;
+          font-size: 14px;
         }
 
         .footer-nav {
@@ -2072,10 +2495,26 @@
       </div>
     </header>
 
+    <nav class="journey-seam" aria-label="Registration Journey">
+      <ol>
+        <li><a href="#pricing" data-journey-link><span>Fees</span></a></li>
+        <li><a href="#register" data-journey-link><span>Register</span></a></li>
+        <li><a href="#hotel" data-journey-link><span>Hotel</span></a></li>
+      </ol>
+    </nav>
+
     <main id="main" tabindex="-1">
       <section class="hero video-paused" id="top">
         <div class="hero-video" aria-hidden="true">
-          <video muted loop playsinline preload="none" poster="assets/convention-photos/convention-networking-1600.webp">
+          <picture class="hero-poster">
+            <source
+              type="image/webp"
+              srcset="assets/convention-photos/convention-networking-480.webp 480w, assets/convention-photos/convention-networking-960.webp 960w, assets/convention-photos/convention-networking-1440.webp 1440w, assets/convention-photos/convention-networking-1600.webp 1600w"
+              sizes="100vw"
+            />
+            <img src="assets/convention-photos/convention-networking.jpg" width="1600" height="1067" fetchpriority="high" decoding="async" alt="" />
+          </picture>
+          <video muted loop playsinline preload="none">
             <source data-src="assets/videos/fci-convention-2026-hero-720p-optimized.mp4" type="video/mp4" />
           </video>
         </div>
@@ -2148,10 +2587,12 @@
               </tbody>
             </table>
           </div>
-          <p class="fine">Published pricing requires both convention and hotel registration for the applicable timing. The embedded registration forms do not collect these fees. For billing details—or if you will complete either step on October 16—<a href="#contact">confirm with the Convention Team</a>.</p>
-          <aside class="policy-note" aria-labelledby="compliance-note-title">
-            <h3 id="compliance-note-title">Attendance and Compliance Note</h3>
-            <p>Branches that do not send at least one person from the business will receive a <strong>$1,999 convention contribution charge</strong> and be out of compliance per the franchise agreement.</p>
+          <p class="pricing-note-lead"><span class="pricing-note-primary">Published pricing requires both convention and hotel registration for the applicable timing.</span><span class="pricing-note-secondary">The embedded registration forms do not collect these fees. For billing details—or if you will complete either step on October 16—<a href="#contact">confirm with the Convention Team</a>.</span></p>
+          <aside class="policy-note-disclosure" aria-label="Attendance and Compliance Note">
+            <details>
+              <summary>Attendance and Compliance Note</summary>
+              <p>Branches that do not send at least one person from the business will receive a <strong>$1,999 convention contribution charge</strong> and be out of compliance per the franchise agreement.</p>
+            </details>
           </aside>
           <ol class="journey-steps" aria-label="Registration and Hotel Steps">
             <li>
@@ -2175,6 +2616,7 @@
             <p class="sr-only" id="registration-tab-help">
               Use the registration tabs to choose a role. Use arrow keys to move between tabs.
             </p>
+            <p class="sr-only" id="registration-form-announcement" role="status" aria-live="polite" aria-atomic="true"></p>
             <div class="tabs" role="tablist" aria-label="Attendee Registration Forms" aria-describedby="registration-tab-help">
               <button class="tab" id="tab-owner" role="tab" aria-selected="true" aria-controls="panel-owner" type="button">
                 Franchise Owner
@@ -2187,28 +2629,30 @@
               </button>
             </div>
 
-            <aside class="registration-briefing" aria-labelledby="registration-briefing-title">
-              <h3 id="registration-briefing-title">Fee and Attendance Reminder</h3>
-              <div class="briefing-fees">
-                <p><strong>Business:</strong> $749 Early Bird / $1,149 Standard</p>
-                <p><strong>Additional Attendee:</strong> $75 Early Bird / $199 Standard</p>
-                <p><strong>No Branch Attendee:</strong> $1,999 charge and out of compliance</p>
-              </div>
-              <p class="fine">The forms below do not collect fees. Early Bird pricing is before October 16 and Standard pricing is after October 16. If either registration or hotel booking will happen on October 16, <a href="#contact">confirm the timing</a>. <a href="#pricing">Review all fee details</a>.</p>
-            </aside>
+            <div class="registration-guidance">
+              <aside class="registration-briefing" aria-labelledby="registration-briefing-title">
+                <h3 id="registration-briefing-title">Fee and Attendance Reminder</h3>
+                <div class="briefing-fees">
+                  <p><strong>Business:</strong> $749 Early Bird / $1,149 Standard</p>
+                  <p><strong>Additional Attendee:</strong> $75 Early Bird / $199 Standard</p>
+                  <p><strong>No Branch Attendee:</strong> $1,999 charge and out of compliance</p>
+                </div>
+                <p class="fine">The forms below do not collect fees. Early Bird pricing is before October 16 and Standard pricing is after October 16. If either registration or hotel booking will happen on October 16, <a href="#contact">confirm the timing</a>. <a href="#pricing">Review all fee details</a>.</p>
+              </aside>
 
-            <div class="handoff-note">
-              <h3>Before You Begin</h3>
-              <ul class="registration-prep">
-                <li>Complete one role-specific form for every attendee who needs a badge.</li>
-                <li>Have badge and contact details, banquet and dietary information, travel dates, and passport status ready.</li>
-                <li>Check spelling carefully; each form ends with an acknowledgment and signature.</li>
-              </ul>
-              <details class="registration-details">
-                <summary>How Registration Works</summary>
-                <p>The attendee forms do not collect the published convention fees, and no completion-time estimate is published.</p>
-                <p>Your responses go directly to Jotform. Registration is complete only when the active form reports success. This page cannot read or display submission status. If the form does not report success, <a href="#contact">contact the Convention Team</a>.</p>
-              </details>
+              <div class="handoff-note">
+                <h3>Before You Begin</h3>
+                <ul class="registration-prep">
+                  <li>Complete one role-specific form for every attendee who needs a badge.</li>
+                  <li>Have badge and contact details, banquet and dietary information, travel dates, and passport status ready.</li>
+                  <li>Check spelling carefully; each form ends with an acknowledgment and signature.</li>
+                </ul>
+                <details class="registration-details">
+                  <summary>How Registration Works</summary>
+                  <p>The attendee forms do not collect the published convention fees, and no completion-time estimate is published.</p>
+                  <p>Your responses go directly to Jotform. Registration is complete only when the active form reports success. This page cannot read or display submission status. If the form does not report success, <a href="#contact">contact the Convention Team</a>.</p>
+                </details>
+              </div>
             </div>
 
             <section class="form-panel active" id="panel-owner" role="tabpanel" aria-labelledby="tab-owner">
@@ -2220,13 +2664,19 @@
                 <div class="registration-actions">
                   <a class="btn text" href="https://form.jotform.com/262185030603144" target="_blank" rel="noopener noreferrer">Open Owner Form in a New Tab<span class="sr-only"> opens in a new tab</span></a>
                 </div>
-                <div class="jotform-frame" data-jotform-form="262185030603144" data-jotform-title="2027 Franchise Owner Convention Registration">
-                  <div class="jotform-status">
-                    <p data-jotform-status-text role="status">Loading Owner Registration…</p>
-                    <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
+                <details class="embedded-form-disclosure">
+                  <summary>
+                    <span class="embedded-form-title">Complete Owner Registration on This Page</span>
+                    <span class="embedded-form-hint">The embedded Jotform loads only when you open it.</span>
+                  </summary>
+                  <div class="jotform-frame" data-jotform-form="262185030603144" data-jotform-title="2027 Franchise Owner Convention Registration">
+                    <div class="jotform-status">
+                      <p data-jotform-status-text>Loading Owner Registration…</p>
+                      <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
+                    </div>
+                    <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
                   </div>
-                  <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
-                </div>
+                </details>
               </div>
             </section>
 
@@ -2239,13 +2689,19 @@
                 <div class="registration-actions">
                   <a class="btn text" href="https://form.jotform.com/262185769189172" target="_blank" rel="noopener noreferrer">Open Employee Form in a New Tab<span class="sr-only"> opens in a new tab</span></a>
                 </div>
-                <div class="jotform-frame" data-jotform-form="262185769189172" data-jotform-title="2027 Employee Convention Registration">
-                  <div class="jotform-status">
-                    <p data-jotform-status-text role="status">Loading Employee Registration…</p>
-                    <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
+                <details class="embedded-form-disclosure">
+                  <summary>
+                    <span class="embedded-form-title">Complete Employee Registration on This Page</span>
+                    <span class="embedded-form-hint">The embedded Jotform loads only when you open it.</span>
+                  </summary>
+                  <div class="jotform-frame" data-jotform-form="262185769189172" data-jotform-title="2027 Employee Convention Registration">
+                    <div class="jotform-status">
+                      <p data-jotform-status-text>Loading Employee Registration…</p>
+                      <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
+                    </div>
+                    <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
                   </div>
-                  <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
-                </div>
+                </details>
               </div>
             </section>
 
@@ -2259,13 +2715,19 @@
                 <div class="registration-actions">
                   <a class="btn text" href="https://form.jotform.com/262185864037160" target="_blank" rel="noopener noreferrer">Open Vendor Form in a New Tab<span class="sr-only"> opens in a new tab</span></a>
                 </div>
-                <div class="jotform-frame" data-jotform-form="262185864037160" data-jotform-title="2027 Partner and Supplier Convention Registration">
-                  <div class="jotform-status">
-                    <p data-jotform-status-text role="status">Loading Vendor Registration…</p>
-                    <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
+                <details class="embedded-form-disclosure">
+                  <summary>
+                    <span class="embedded-form-title">Complete Vendor Registration on This Page</span>
+                    <span class="embedded-form-hint">The embedded Jotform loads only when you open it.</span>
+                  </summary>
+                  <div class="jotform-frame" data-jotform-form="262185864037160" data-jotform-title="2027 Partner and Supplier Convention Registration">
+                    <div class="jotform-status">
+                      <p data-jotform-status-text>Loading Vendor Registration…</p>
+                      <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
+                    </div>
+                    <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
                   </div>
-                  <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
-                </div>
+                </details>
               </div>
 
               <details class="sponsorship-card" id="vendor-sponsorship">
@@ -2279,33 +2741,23 @@
                     <a class="btn text" href="#panel-vendor" data-registration-tab-target="tab-vendor">Choose Vendor Registration</a>
                     <a class="btn text" href="https://form.jotform.com/260975696840069" target="_blank" rel="noopener noreferrer">Open Sponsorship Intake in a New Tab<span class="sr-only"> opens in a new tab</span></a>
                   </div>
-                  <div class="jotform-frame" data-jotform-form="260975696840069" data-jotform-title="2027 Convention Diamond Tier Vendor Signup">
-                    <div class="jotform-status">
-                      <p data-jotform-status-text role="status">Loading Diamond Tier Sponsorship Intake…</p>
-                      <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
+                  <details class="embedded-form-disclosure">
+                    <summary>
+                      <span class="embedded-form-title">Open Sponsorship Intake on This Page</span>
+                      <span class="embedded-form-hint">The embedded Jotform loads only when you open it.</span>
+                    </summary>
+                    <div class="jotform-frame" data-jotform-form="260975696840069" data-jotform-title="2027 Convention Diamond Tier Vendor Signup">
+                      <div class="jotform-status">
+                        <p data-jotform-status-text>Loading Diamond Tier Sponsorship Intake…</p>
+                        <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
+                      </div>
+                      <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
                     </div>
-                    <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
-                  </div>
+                  </details>
                 </div>
               </details>
             </section>
           </div>
-          <p class="fine">If an embedded form does not load, use its new-tab link or <a href="#contact">contact the Convention Team</a>.</p>
-
-          <fieldset class="completion-checklist">
-            <legend>Manual Completion Checklist</legend>
-            <p>Use this private checklist as your own reminder. It is saved only in this browser, is not sent to FCI, and does not verify a Jotform submission or hotel reservation. Check an item only after you see the external service report success.</p>
-            <div class="progress-list">
-              <label><input type="checkbox" data-progress-item="attendees-planned" />Every attendee who needs a badge has a role-specific form.</label>
-              <label><input type="checkbox" data-progress-item="attendees-confirmed" />Jotform reported success for every attendee form I submitted.</label>
-              <label><input type="checkbox" data-progress-item="hotel-confirmed" />The separate hotel reservation is complete.</label>
-            </div>
-            <div class="progress-actions">
-              <a class="btn" href="#hotel">Continue to Hotel Step</a>
-              <button class="btn text" id="clear-progress" type="button">Clear Checklist</button>
-            </div>
-            <p class="progress-status" id="progress-status" role="status" aria-live="polite"></p>
-          </fieldset>
         </div>
       </section>
 
@@ -2323,7 +2775,14 @@
             </div>
           </div>
           <figure class="hotel-photo">
-            <img src="assets/hotel-photos/hotel-beach.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="Hard Rock Riviera Maya beach with turquoise water" />
+            <picture>
+              <source
+                type="image/webp"
+                srcset="assets/hotel-photos/hotel-beach-480.webp 480w, assets/hotel-photos/hotel-beach-960.webp 960w, assets/hotel-photos/hotel-beach-1440.webp 1440w"
+                sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) calc(100vw - 40px), (max-width: 1220px) calc(54vw - 42px), 617px"
+              />
+              <img src="assets/hotel-photos/hotel-beach.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="Hard Rock Riviera Maya beach with turquoise water" />
+            </picture>
           </figure>
         </div>
       </section>
@@ -2428,9 +2887,9 @@
       <section class="section white" id="photos">
         <div class="wrap">
           <div class="section-head">
-            <h2>2026 Convention Photos</h2>
+            <h2>Convention Moments</h2>
           </div>
-          <div class="photo-grid" role="list" aria-label="2026 Convention Photo Gallery">
+          <div class="photo-grid" role="list" aria-label="Convention Photo Gallery">
             <figure role="listitem">
               <picture>
                 <source
@@ -2438,9 +2897,9 @@
                   srcset="assets/convention-photos/convention-main-session-480.webp 480w, assets/convention-photos/convention-main-session-960.webp 960w, assets/convention-photos/convention-main-session-1440.webp 1440w"
                   sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) calc(100vw - 40px), (max-width: 1220px) calc(40.35vw - 26px), 466px"
                 />
-                <img src="assets/convention-photos/convention-main-session.jpg?v=approved-2026b" width="1600" height="1067" loading="lazy" decoding="async" alt="Speaker presenting on stage at the 2026 convention" />
+                <img src="assets/convention-photos/convention-main-session.jpg?v=approved-2026b" width="1600" height="1067" loading="lazy" decoding="async" alt="Speaker presenting on stage during a convention main session" />
               </picture>
-              <figcaption>Main Session, 2026</figcaption>
+              <figcaption>Main Session</figcaption>
             </figure>
             <figure role="listitem">
               <picture>
@@ -2451,7 +2910,7 @@
                 />
                 <img src="assets/convention-photos/convention-welcome.jpg?v=approved-2026b" width="1600" height="1067" loading="lazy" decoding="async" alt="Convention attendees at a balcony reception" />
               </picture>
-              <figcaption>Balcony Reception, 2026</figcaption>
+              <figcaption>Balcony Reception</figcaption>
             </figure>
             <figure class="wide-feature" role="listitem">
               <picture>
@@ -2460,9 +2919,9 @@
                   srcset="assets/convention-photos/convention-awards-480.webp 480w, assets/convention-photos/convention-awards-960.webp 960w, assets/convention-photos/convention-awards-1440.webp 1440w"
                   sizes="(max-width: 560px) calc(100vw - 28px), (max-width: 900px) calc(100vw - 40px), (max-width: 1220px) calc(59.65vw - 26px), 702px"
                 />
-                <img src="assets/convention-photos/convention-awards.jpg?v=approved-2026b" width="1600" height="1067" loading="lazy" decoding="async" alt="Large group of 2026 convention award recipients on stage" />
+                <img src="assets/convention-photos/convention-awards.jpg?v=approved-2026b" width="1600" height="1067" loading="lazy" decoding="async" alt="Large group of convention award recipients on stage" />
               </picture>
-              <figcaption>Award Recipients, 2026</figcaption>
+              <figcaption>Award Recipients</figcaption>
             </figure>
             <figure role="listitem">
               <picture>
@@ -2473,7 +2932,7 @@
                 />
                 <img src="assets/convention-photos/convention-candid.jpg?v=approved-2026b" width="1600" height="1067" loading="lazy" decoding="async" alt="Convention attendees gathered at a reception table" />
               </picture>
-              <figcaption>Reception Gathering, 2026</figcaption>
+              <figcaption>Reception Gathering</figcaption>
             </figure>
             <figure role="listitem">
               <picture>
@@ -2484,7 +2943,7 @@
                 />
                 <img src="assets/convention-photos/convention-evening.jpg?v=approved-2026b" width="1600" height="1067" loading="lazy" decoding="async" alt="Convention attendees laughing together at an evening reception" />
               </picture>
-              <figcaption>Evening Reception, 2026</figcaption>
+              <figcaption>Evening Reception</figcaption>
             </figure>
           </div>
         </div>
@@ -2584,6 +3043,14 @@
       </section>
 
       <section class="section final-cta" aria-labelledby="final-registration-title">
+        <picture class="final-cta-media" aria-hidden="true">
+          <source
+            type="image/webp"
+            srcset="assets/convention-photos/convention-awards-480.webp 480w, assets/convention-photos/convention-awards-960.webp 960w, assets/convention-photos/convention-awards-1440.webp 1440w"
+            sizes="100vw"
+          />
+          <img src="assets/convention-photos/convention-awards.jpg?v=approved-2026b" width="1600" height="1067" loading="lazy" decoding="async" alt="" />
+        </picture>
         <div class="wrap">
           <div class="section-head">
             <h2 id="final-registration-title">Finish Your Convention Plan</h2>
@@ -2697,16 +3164,17 @@
       const navRegister = document.querySelector(".nav-register");
       const primaryNavigation = document.querySelector("#primary-navigation");
       const mobileNavigationQuery = window.matchMedia("(max-width: 900px)");
+      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       const registrationFormShell = document.querySelector(".form-shell");
+      const registrationFormAnnouncement = document.querySelector("#registration-form-announcement");
       const tabs = Array.from(registrationFormShell?.querySelectorAll("[role='tab']") || []);
       const panels = Array.from(registrationFormShell?.querySelectorAll("[role='tabpanel']") || []);
       const sponsorshipDetails = document.querySelector("#vendor-sponsorship");
-      const sponsorshipFormHost = document.querySelector("#vendor-sponsorship [data-jotform-form]");
       const sponsorshipOpeners = Array.from(document.querySelectorAll("a[href='#vendor-sponsorship']"));
       const registrationTabTargets = Array.from(document.querySelectorAll("[data-registration-tab-target]"));
-      const progressInputs = Array.from(document.querySelectorAll("[data-progress-item]"));
-      const clearProgress = document.querySelector("#clear-progress");
-      const progressStatus = document.querySelector("#progress-status");
+      const embeddedFormDetails = Array.from(document.querySelectorAll(".embedded-form-disclosure"));
+      const journeySeam = document.querySelector(".journey-seam");
+      const journeyLinks = Array.from(document.querySelectorAll("[data-journey-link]"));
       const floatingTop = document.querySelector(".floating-top");
 
       const closeMobileMenu = ({ returnFocus = false } = {}) => {
@@ -2768,13 +3236,19 @@
 
       mobileNavigationQuery.addEventListener?.("change", () => closeMobileMenu());
 
-      const sectionLinks = Array.from(primaryNavigation?.querySelectorAll("a[href^='#']") || [])
-        .filter((link) => document.querySelector(link.getAttribute("href")));
+      const sectionLinks = [
+        ...Array.from(primaryNavigation?.querySelectorAll("a[href^='#']") || []),
+        ...journeyLinks,
+      ].filter((link) => document.querySelector(link.getAttribute("href")));
 
       if ("IntersectionObserver" in window && sectionLinks.length) {
-        const linksBySection = new Map(
-          sectionLinks.map((link) => [document.querySelector(link.getAttribute("href")), link])
-        );
+        const linksBySection = new Map();
+        sectionLinks.forEach((link) => {
+          const section = document.querySelector(link.getAttribute("href"));
+          if (!section) return;
+          if (!linksBySection.has(section)) linksBySection.set(section, []);
+          linksBySection.get(section).push(link);
+        });
         const visibleSections = new Set();
         const sectionObserver = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
@@ -2786,15 +3260,23 @@
             .sort((a, b) => Math.abs(a.getBoundingClientRect().top) - Math.abs(b.getBoundingClientRect().top))[0];
           sectionLinks.forEach((link) => link.removeAttribute("aria-current"));
           navRegister?.removeAttribute("aria-current");
-          linksBySection.get(current)?.setAttribute("aria-current", "location");
+          linksBySection.get(current)?.forEach((link) => link.setAttribute("aria-current", "location"));
+          journeySeam?.classList.toggle("is-visible", journeyLinks.some((link) => link.hasAttribute("aria-current")));
           if (current?.id === "register") navRegister?.setAttribute("aria-current", "location");
         }, { rootMargin: "-72px 0px -68% 0px", threshold: 0 });
 
         linksBySection.forEach((_link, section) => sectionObserver.observe(section));
       }
 
+      const hotelSection = document.querySelector("#hotel");
+      if (journeySeam && hotelSection && "IntersectionObserver" in window) {
+        const journeyToneObserver = new IntersectionObserver(([entry]) => {
+          journeySeam.classList.toggle("is-on-dark", entry.isIntersecting);
+        }, { rootMargin: "-49% 0px -49% 0px", threshold: 0 });
+        journeyToneObserver.observe(hotelSection);
+      }
+
       if (videoToggle && hero && heroVideo && heroVideoSource) {
-        const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
         const videoWidthQuery = window.matchMedia("(min-width: 901px)");
         const saveData = navigator.connection?.saveData === true;
         let videoSourceEnabled = false;
@@ -2831,7 +3313,7 @@
         };
 
         const syncHeroVideo = () => {
-          const eligible = videoWidthQuery.matches && !motionQuery.matches && !saveData;
+          const eligible = videoWidthQuery.matches && !reducedMotionQuery.matches && !saveData;
           if (!eligible) {
             disableHeroVideo();
             return;
@@ -2842,7 +3324,7 @@
         };
 
         videoToggle.addEventListener("click", () => setVideoPaused(!hero.classList.contains("video-paused")));
-        motionQuery.addEventListener?.("change", syncHeroVideo);
+        reducedMotionQuery.addEventListener?.("change", syncHeroVideo);
         videoWidthQuery.addEventListener?.("change", syncHeroVideo);
 
         syncHeroVideo();
@@ -2876,6 +3358,12 @@
       ];
       const mountedJotformFrames = new Map();
       const jotformReadyTimers = new WeakMap();
+
+      const announceJotformStatus = (host, message) => {
+        if (!registrationFormAnnouncement || !host) return;
+        const title = host.dataset.jotformTitle || "Embedded form";
+        registrationFormAnnouncement.textContent = `${title}: ${message}`;
+      };
 
       const isTrustedJotformOrigin = (origin) => {
         try {
@@ -2914,6 +3402,7 @@
         const retry = host.querySelector("[data-jotform-retry]");
         if (status) status.textContent = "Embedded form ready.";
         if (retry) retry.hidden = true;
+        announceJotformStatus(host, "Ready.");
         host.dataset.mounted = "true";
         host.classList.remove("has-error");
         host.classList.add("is-loaded");
@@ -2929,11 +3418,12 @@
         host.dataset.mounted = "error";
         host.classList.remove("is-loaded");
         host.classList.add("has-error");
-        host.removeAttribute("aria-busy");
         const status = host.querySelector("[data-jotform-status-text]");
         const retry = host.querySelector("[data-jotform-retry]");
         if (status) status.textContent = message;
         if (retry) retry.hidden = false;
+        announceJotformStatus(host, message);
+        host.removeAttribute("aria-busy");
       };
 
       window.addEventListener("message", (event) => {
@@ -2949,8 +3439,9 @@
         let formConfirmedReady = false;
 
         if (action === "setHeight" && validHeight) {
+          const minimumHeight = Number.parseInt(window.getComputedStyle(frame).minHeight, 10);
           frame.style.height = `${numericValue}px`;
-          if (Number.parseInt(window.getComputedStyle(frame).minHeight, 10) > numericValue) {
+          if (minimumHeight > numericValue) {
             frame.style.minHeight = `${numericValue}px`;
           }
           formConfirmedReady = true;
@@ -2992,6 +3483,7 @@
         host.setAttribute("aria-busy", "true");
         if (status) status.textContent = host.dataset.loadingText || "Loading embedded form…";
         if (retry) retry.hidden = true;
+        announceJotformStatus(host, "Loading.");
 
         let frame;
 
@@ -3049,30 +3541,58 @@
         });
       });
 
-      const mountPanelForm = (panel) => {
-        const host = panel?.querySelector("[data-jotform-form]");
-        if (host) mountJotform(host);
-      };
+      embeddedFormDetails.forEach((details) => {
+        details.addEventListener("toggle", () => {
+          if (!details.open) return;
+          if (!details.dataset.opened) {
+            details.dataset.opened = "true";
+            details.classList.add("is-first-open");
+            window.setTimeout(() => details.classList.remove("is-first-open"), 500);
+          }
+          mountJotform(details.querySelector("[data-jotform-form]"));
+        });
+      });
 
       const activateTab = (tab) => {
-        let activePanel;
-        tabs.forEach((item) => {
-          const isActive = item === tab;
-          item.setAttribute("aria-selected", String(isActive));
-          item.setAttribute("tabindex", isActive ? "0" : "-1");
-        });
-        panels.forEach((panel) => {
-          const isActive = panel.id === tab.getAttribute("aria-controls");
-          panel.classList.toggle("active", isActive);
-          panel.hidden = !isActive;
-          if (isActive) activePanel = panel;
-        });
-        mountPanelForm(activePanel);
+        if (!tab || tab.getAttribute("aria-selected") === "true") return Promise.resolve();
+
+        let updated = false;
+        const update = () => {
+          updated = true;
+          tabs.forEach((item) => {
+            const isActive = item === tab;
+            item.setAttribute("aria-selected", String(isActive));
+            item.setAttribute("tabindex", isActive ? "0" : "-1");
+          });
+          panels.forEach((panel) => {
+            const isActive = panel.id === tab.getAttribute("aria-controls");
+            panel.classList.toggle("active", isActive);
+            panel.hidden = !isActive;
+          });
+        };
+
+        const canMorph = typeof document.startViewTransition === "function"
+          && !reducedMotionQuery.matches
+          && !registrationFormShell?.querySelector("iframe");
+        if (!canMorph) {
+          update();
+          return Promise.resolve();
+        }
+
+        try {
+          const transition = document.startViewTransition(update);
+          return transition.updateCallbackDone.catch(() => {
+            if (!updated) update();
+          });
+        } catch {
+          update();
+          return Promise.resolve();
+        }
       };
 
       tabs.forEach((tab, index) => {
         tab.setAttribute("tabindex", tab.getAttribute("aria-selected") === "true" ? "0" : "-1");
-        tab.addEventListener("click", () => activateTab(tab));
+        tab.addEventListener("click", () => void activateTab(tab));
         tab.addEventListener("keydown", (event) => {
           const keyActions = {
             ArrowRight: (index + 1) % tabs.length,
@@ -3087,7 +3607,7 @@
           event.preventDefault();
           const nextTab = tabs[keyActions[event.key]];
           nextTab.focus();
-          activateTab(nextTab);
+          void activateTab(nextTab);
         });
       });
 
@@ -3096,99 +3616,20 @@
           const tab = document.querySelector(`#${link.dataset.registrationTabTarget}`);
           if (!tab || !tabs.includes(tab)) return;
           event.preventDefault();
-          activateTab(tab);
           const panel = document.querySelector(`#${tab.getAttribute("aria-controls")}`);
           const heading = panel?.querySelector("h3");
-          panel?.scrollIntoView({ block: "start" });
-          requestAnimationFrame(() => heading?.focus({ preventScroll: true }));
+          activateTab(tab).then(() => {
+            panel?.scrollIntoView({ block: "start" });
+            requestAnimationFrame(() => heading?.focus({ preventScroll: true }));
+          });
         });
-      });
-
-      const initialRegistrationPanel = panels.find((panel) => !panel.hidden);
-      if (registrationFormShell && initialRegistrationPanel && "IntersectionObserver" in window) {
-        const registrationObserver = new IntersectionObserver((entries, observer) => {
-          if (!entries.some((entry) => entry.isIntersecting)) return;
-          mountPanelForm(initialRegistrationPanel);
-          observer.disconnect();
-        }, { rootMargin: "400px 0px", threshold: 0 });
-        registrationObserver.observe(registrationFormShell);
-      } else {
-        mountPanelForm(initialRegistrationPanel);
-      }
-
-      sponsorshipDetails?.addEventListener("toggle", () => {
-        if (sponsorshipDetails.open) mountJotform(sponsorshipFormHost);
       });
 
       sponsorshipOpeners.forEach((link) => {
         link.addEventListener("click", () => {
           sponsorshipDetails.open = true;
-          mountJotform(sponsorshipFormHost);
         });
       });
-
-      if (progressInputs.length) {
-        const progressStorageKey = "fci-convention-2027-manual-progress-v1";
-
-        try {
-          const rawProgress = window.localStorage.getItem(progressStorageKey);
-          let savedProgress = {};
-          let resetInvalidProgress = false;
-
-          if (rawProgress) {
-            try {
-              const parsedProgress = JSON.parse(rawProgress);
-              if (parsedProgress && typeof parsedProgress === "object" && !Array.isArray(parsedProgress)) {
-                savedProgress = parsedProgress;
-              } else {
-                resetInvalidProgress = true;
-              }
-            } catch {
-              resetInvalidProgress = true;
-            }
-          }
-
-          if (resetInvalidProgress) {
-            window.localStorage.removeItem(progressStorageKey);
-            if (progressStatus) progressStatus.textContent = "Invalid saved checklist data was cleared from this browser.";
-          }
-
-          progressInputs.forEach((input) => {
-            input.checked = savedProgress[input.dataset.progressItem] === true;
-          });
-          if (!resetInvalidProgress && progressInputs.some((input) => input.checked) && progressStatus) {
-            progressStatus.textContent = "Your manual checklist was restored from this browser. It does not verify completion.";
-          }
-        } catch {
-          if (progressStatus) progressStatus.textContent = "This checklist works for this visit, but browser storage is unavailable.";
-        }
-
-        progressInputs.forEach((input) => {
-          input.addEventListener("change", () => {
-            const nextProgress = Object.fromEntries(
-              progressInputs.map((item) => [item.dataset.progressItem, item.checked])
-            );
-            try {
-              window.localStorage.setItem(progressStorageKey, JSON.stringify(nextProgress));
-              if (progressStatus) progressStatus.textContent = "Checklist updated in this browser. It does not verify completion.";
-            } catch {
-              if (progressStatus) progressStatus.textContent = "Checklist updated for this visit, but browser storage is unavailable.";
-            }
-          });
-        });
-
-        clearProgress?.addEventListener("click", () => {
-          progressInputs.forEach((input) => {
-            input.checked = false;
-          });
-          try {
-            window.localStorage.removeItem(progressStorageKey);
-          } catch {
-            // The visible checklist is still cleared when storage is unavailable.
-          }
-          if (progressStatus) progressStatus.textContent = "Manual checklist cleared.";
-        });
-      }
 
       const speakerModal = document.querySelector("#speaker-daymond-modal");
       const speakerModalTitle = document.querySelector("#speaker-daymond-title");
@@ -3211,7 +3652,7 @@
             const modalContent = speakerModal.querySelector(".speaker-modal-content");
             if (modalCard) modalCard.scrollTop = 0;
             if (modalContent) modalContent.scrollTop = 0;
-            requestAnimationFrame(() => speakerModalTitle?.focus({ preventScroll: true }));
+            requestAnimationFrame(() => speakerModalTitle?.focus());
           }
         });
       });

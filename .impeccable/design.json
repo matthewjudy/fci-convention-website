@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-16T01:09:27Z",
+  "generatedAt": "2026-08-17T13:23:43Z",
   "title": "Design System: 2027 FCI Convention Registration",
   "extensions": {
     "colorMeta": {
@@ -76,6 +76,30 @@
         "canonical": "#dfe4e2",
         "tonalRamp": ["color-mix(in srgb, #dfe4e2 45%, black 55%)", "color-mix(in srgb, #dfe4e2 60%, black 40%)", "color-mix(in srgb, #dfe4e2 80%, black 20%)", "#dfe4e2", "color-mix(in srgb, #dfe4e2 80%, white 20%)", "color-mix(in srgb, #dfe4e2 60%, white 40%)", "color-mix(in srgb, #dfe4e2 35%, white 65%)", "color-mix(in srgb, #dfe4e2 12%, white 88%)"]
       },
+      "strong-divider": {
+        "role": "neutral",
+        "displayName": "Strong Divider",
+        "canonical": "#cdd9d6",
+        "tonalRamp": ["color-mix(in srgb, #cdd9d6 45%, black 55%)", "color-mix(in srgb, #cdd9d6 60%, black 40%)", "color-mix(in srgb, #cdd9d6 80%, black 20%)", "#cdd9d6", "color-mix(in srgb, #cdd9d6 80%, white 20%)", "color-mix(in srgb, #cdd9d6 60%, white 40%)", "color-mix(in srgb, #cdd9d6 35%, white 65%)", "color-mix(in srgb, #cdd9d6 12%, white 88%)"]
+      },
+      "tab-divider": {
+        "role": "neutral",
+        "displayName": "Tab Divider",
+        "canonical": "#c4d7d6",
+        "tonalRamp": ["color-mix(in srgb, #c4d7d6 45%, black 55%)", "color-mix(in srgb, #c4d7d6 60%, black 40%)", "color-mix(in srgb, #c4d7d6 80%, black 20%)", "#c4d7d6", "color-mix(in srgb, #c4d7d6 80%, white 20%)", "color-mix(in srgb, #c4d7d6 60%, white 40%)", "color-mix(in srgb, #c4d7d6 35%, white 65%)", "color-mix(in srgb, #c4d7d6 12%, white 88%)"]
+      },
+      "media-placeholder": {
+        "role": "neutral",
+        "displayName": "Media Placeholder",
+        "canonical": "#d7e4e3",
+        "tonalRamp": ["color-mix(in srgb, #d7e4e3 45%, black 55%)", "color-mix(in srgb, #d7e4e3 60%, black 40%)", "color-mix(in srgb, #d7e4e3 80%, black 20%)", "#d7e4e3", "color-mix(in srgb, #d7e4e3 80%, white 20%)", "color-mix(in srgb, #d7e4e3 60%, white 40%)", "color-mix(in srgb, #d7e4e3 35%, white 65%)", "color-mix(in srgb, #d7e4e3 12%, white 88%)"]
+      },
+      "accessible-focus-coral": {
+        "role": "tertiary",
+        "displayName": "Accessible Focus Coral",
+        "canonical": "#cf4b36",
+        "tonalRamp": ["color-mix(in srgb, #cf4b36 45%, black 55%)", "color-mix(in srgb, #cf4b36 60%, black 40%)", "color-mix(in srgb, #cf4b36 80%, black 20%)", "#cf4b36", "color-mix(in srgb, #cf4b36 80%, white 20%)", "color-mix(in srgb, #cf4b36 60%, white 40%)", "color-mix(in srgb, #cf4b36 35%, white 65%)", "color-mix(in srgb, #cf4b36 12%, white 88%)"]
+      },
       "attendance-notice": {
         "role": "tertiary",
         "displayName": "Attendance Notice",
@@ -99,6 +123,18 @@
         "displayName": "Corporate Link Cyan",
         "canonical": "#4bc5dc",
         "tonalRamp": ["color-mix(in srgb, #4bc5dc 45%, black 55%)", "color-mix(in srgb, #4bc5dc 60%, black 40%)", "color-mix(in srgb, #4bc5dc 80%, black 20%)", "#4bc5dc", "color-mix(in srgb, #4bc5dc 80%, white 20%)", "color-mix(in srgb, #4bc5dc 60%, white 40%)", "color-mix(in srgb, #4bc5dc 35%, white 65%)", "color-mix(in srgb, #4bc5dc 12%, white 88%)"]
+      },
+      "corporate-footer-copy": {
+        "role": "neutral",
+        "displayName": "Corporate Footer Copy",
+        "canonical": "#d8e7ef",
+        "tonalRamp": ["color-mix(in srgb, #d8e7ef 45%, black 55%)", "color-mix(in srgb, #d8e7ef 60%, black 40%)", "color-mix(in srgb, #d8e7ef 80%, black 20%)", "#d8e7ef", "color-mix(in srgb, #d8e7ef 80%, white 20%)", "color-mix(in srgb, #d8e7ef 60%, white 40%)", "color-mix(in srgb, #d8e7ef 35%, white 65%)", "color-mix(in srgb, #d8e7ef 12%, white 88%)"]
+      },
+      "corporate-link-active": {
+        "role": "secondary",
+        "displayName": "Corporate Link Active",
+        "canonical": "#75d9e9",
+        "tonalRamp": ["color-mix(in srgb, #75d9e9 45%, black 55%)", "color-mix(in srgb, #75d9e9 60%, black 40%)", "color-mix(in srgb, #75d9e9 80%, black 20%)", "#75d9e9", "color-mix(in srgb, #75d9e9 80%, white 20%)", "color-mix(in srgb, #75d9e9 60%, white 40%)", "color-mix(in srgb, #75d9e9 35%, white 65%)", "color-mix(in srgb, #75d9e9 12%, white 88%)"]
       }
     },
     "typographyMeta": {
@@ -107,17 +143,35 @@
       "title": { "displayName": "Operational Title", "purpose": "Cards, notices, disclosures, and footer groups." },
       "body": { "displayName": "Operational Body", "purpose": "Instructions, policies, and event logistics." },
       "label": { "displayName": "Action Label", "purpose": "Navigation, buttons, tabs, and state." },
-      "metadata": { "displayName": "Tracked Metadata", "purpose": "Compact facts and schedule dates; never action labels or paragraphs." }
+      "metadata": { "displayName": "Tracked Metadata", "purpose": "Compact facts and schedule dates; never action labels or paragraphs." },
+      "display-compact": { "displayName": "Compact Display", "purpose": "The mobile hero-title override." },
+      "metric": { "displayName": "Fee Metric", "purpose": "Large pricing values and comparison figures." },
+      "step-marker": { "displayName": "Step Marker", "purpose": "Ordered registration and hotel journey numerals." },
+      "hero-deck": { "displayName": "Hero Deck", "purpose": "Supporting hero copy beneath the main title." },
+      "lead": { "displayName": "Section Lead", "purpose": "Prominent section introductions and supporting emphasis." },
+      "contact-emphasis": { "displayName": "Contact Emphasis", "purpose": "The visible convention contact address." },
+      "table-label": { "displayName": "Table Label", "purpose": "Comparison-table column and row labels." },
+      "supporting": { "displayName": "Supporting Copy", "purpose": "Captions, fee timing, and footer or legal support." },
+      "journey-locator": { "displayName": "Journey Locator", "purpose": "Redundant wide-desktop wayfinding with a 44px target; not the primary action-label pattern." }
     },
     "shadows": [
       { "name": "resting-card", "value": "0 12px 30px rgba(0, 0, 0, 0.08)", "purpose": "Low separation for pricing and content containers." },
       { "name": "interactive-lift", "value": "0 20px 42px rgba(0, 0, 0, 0.16)", "purpose": "Hover and focus lift when motion is allowed." },
-      { "name": "protected-overlay", "value": "0 28px 80px rgba(0, 0, 0, 0.34)", "purpose": "Modal separation over a dark backdrop." }
+      { "name": "protected-overlay", "value": "0 28px 80px rgba(0, 0, 0, 0.34)", "purpose": "Modal separation over a dark backdrop." },
+      { "name": "resting-compact", "value": "0 8px 22px rgba(0, 0, 0, 0.10)", "purpose": "Compact resting separation for small surfaces." },
+      { "name": "focus-within", "value": "0 12px 30px rgba(0, 0, 0, 0.12)", "purpose": "Quiet focus-within reinforcement without a brand-colored halo." },
+      { "name": "resting-media", "value": "0 18px 48px rgba(0, 0, 0, 0.14)", "purpose": "Resting separation for destination photography." },
+      { "name": "portrait-lift", "value": "0 14px 34px rgba(0, 0, 0, 0.20)", "purpose": "Focused portrait and speaker-media separation." },
+      { "name": "button-lift", "value": "0 16px 32px rgba(0, 0, 0, 0.22)", "purpose": "Primary-control lift on hover and focus when motion is allowed." },
+      { "name": "gallery-lift", "value": "0 28px 70px rgba(0, 0, 0, 0.28)", "purpose": "Contained gallery emphasis on hover-capable devices." },
+      { "name": "floating-lift", "value": "0 18px 42px rgba(0, 0, 0, 0.28)", "purpose": "Separation for the wide-desktop Back to Top control." },
+      { "name": "lightbox-overlay", "value": "0 28px 90px rgba(0, 0, 0, 0.42)", "purpose": "Deep lightbox separation over its dark backdrop." }
     ],
     "motion": [
       { "name": "state-fast", "value": "180ms ease", "purpose": "Color, border, and compact state feedback." },
       { "name": "surface-standard", "value": "220ms ease", "purpose": "Small transforms and surface transitions." },
       { "name": "image-standard", "value": "260ms ease", "purpose": "Contained gallery emphasis on hover-capable devices." },
+      { "name": "contrast-preserving", "value": "transform only for readable scroll-linked content", "purpose": "Scroll choreography never fades or filters text and controls below WCAG AA at an intermediate frame." },
       { "name": "reduced-motion", "value": "none", "purpose": "Immediate state changes with no scroll, scale, lift, or fade timing." }
     ],
     "breakpoints": [
@@ -135,7 +189,7 @@
       "refersTo": "button-primary",
       "description": "The decisive registration and progression action.",
       "html": "<button class=\"ds-button-primary\">Start Registration</button>",
-      "css": ".ds-button-primary { display:inline-flex; min-height:46px; align-items:center; justify-content:center; border:2px solid transparent; border-radius:var(--radius,8px); padding:0 16px; background:var(--lime,#8cc63f); color:var(--navy,#12314a); font:900 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; cursor:pointer; box-shadow:0 10px 22px rgba(0,0,0,.16); transition:background-color 180ms ease,border-color 180ms ease,color 180ms ease,box-shadow 180ms ease,transform 220ms ease; } .ds-button-primary:hover,.ds-button-primary:focus-visible { border-color:var(--coral,#e95f45); background:var(--deep-navy,#0b2235); color:#fff; transform:translateY(-2px); box-shadow:0 16px 32px rgba(0,0,0,.22); } .ds-button-primary:focus-visible { outline:3px solid var(--coral,#e95f45); outline-offset:3px; } @media (prefers-reduced-motion:reduce) { .ds-button-primary { transition:none; } .ds-button-primary:hover,.ds-button-primary:focus-visible { transform:none; } }"
+      "css": ".ds-button-primary { display:inline-flex; min-height:46px; align-items:center; justify-content:center; border:2px solid transparent; border-radius:var(--radius,8px); padding:0 16px; background:var(--lime,#8cc63f); color:var(--navy,#12314a); font:900 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; cursor:pointer; box-shadow:0 10px 22px rgba(0,0,0,.16); transition:background-color 180ms ease,border-color 180ms ease,color 180ms ease,box-shadow 180ms ease,transform 220ms ease; } .ds-button-primary:hover,.ds-button-primary:focus-visible { border-color:var(--coral,#e95f45); background:var(--deep-navy,#0b2235); color:#fff; transform:translateY(-2px); box-shadow:0 16px 32px rgba(0,0,0,.22); } .ds-button-primary:focus-visible { outline:3px solid var(--accessible-focus-coral,#cf4b36); outline-offset:3px; } @media (prefers-reduced-motion:reduce) { .ds-button-primary { transition:none; } .ds-button-primary:hover,.ds-button-primary:focus-visible { transform:none; } }"
     },
     {
       "name": "Text Action",
@@ -143,7 +197,7 @@
       "refersTo": "button-text",
       "description": "A quiet but accessible direct-form or recovery action.",
       "html": "<a class=\"ds-text-action\" href=\"#\">Open Form in a New Tab</a>",
-      "css": ".ds-text-action { display:inline-flex; min-height:44px; align-items:center; padding:0 2px; color:var(--teal-dark,#00636a); font:900 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; text-decoration:underline; text-underline-offset:4px; } .ds-text-action:hover,.ds-text-action:focus-visible { color:var(--deep-navy,#0b2235); } .ds-text-action:focus-visible { outline:3px solid var(--coral,#e95f45); outline-offset:3px; }"
+      "css": ".ds-text-action { display:inline-flex; min-height:44px; align-items:center; padding:0 2px; color:var(--teal-dark,#00636a); font:900 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; text-decoration:underline; text-underline-offset:4px; } .ds-text-action:hover,.ds-text-action:focus-visible { color:var(--deep-navy,#0b2235); } .ds-text-action:focus-visible { outline:3px solid var(--accessible-focus-coral,#cf4b36); outline-offset:3px; }"
     },
     {
       "name": "Primary Navigation",
@@ -151,7 +205,7 @@
       "refersTo": "navigation-primary",
       "description": "The official-logo header with five operational destinations.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a aria-current=\"location\" href=\"#\">Register</a><a href=\"#\">Fees</a><a href=\"#\">Hotel</a></nav>",
-      "css": ".ds-nav { display:flex; gap:16px; align-items:center; padding:10px 14px; background:var(--deep-navy,#0b2235); font:800 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; } .ds-nav a { display:inline-flex; min-height:44px; align-items:center; border-radius:999px; padding:8px 10px; color:rgba(255,255,255,.86); text-decoration:none; } .ds-nav a:hover,.ds-nav a:focus-visible,.ds-nav a[aria-current='location'] { background:rgba(140,198,63,.16); color:var(--lime,#8cc63f); } .ds-nav a:focus-visible { outline:3px solid var(--coral,#e95f45); outline-offset:3px; }"
+      "css": ".ds-nav { display:flex; gap:16px; align-items:center; padding:10px 14px; background:var(--deep-navy,#0b2235); font:800 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; } .ds-nav a { display:inline-flex; min-height:44px; align-items:center; border-radius:999px; padding:8px 10px; color:rgba(255,255,255,.86); text-decoration:none; } .ds-nav a:hover,.ds-nav a:focus-visible,.ds-nav a[aria-current='location'] { background:rgba(140,198,63,.16); color:var(--lime,#8cc63f); } .ds-nav a:focus-visible { outline:3px solid var(--accessible-focus-coral,#cf4b36); outline-offset:3px; }"
     },
     {
       "name": "Operational Card",
@@ -159,7 +213,7 @@
       "refersTo": "card",
       "description": "A readable logistics surface with neutral, restrained depth.",
       "html": "<article class=\"ds-card\"><h3>Before You Begin</h3><p>Keep the next action and its constraints together.</p></article>",
-      "css": ".ds-card { max-width:72ch; border:1px solid var(--line,#dfe4e2); border-radius:var(--radius,8px); padding:24px; background:#fff; color:var(--ink,#162029); box-shadow:0 12px 30px rgba(0,0,0,.08); font:400 16px/1.55 Aptos,'Segoe UI',Arial,sans-serif; } .ds-card h3 { margin:0 0 10px; color:var(--navy,#12314a); font-size:21px; } .ds-card p { margin:0; color:var(--muted,#5d6770); } .ds-card:focus-within { border-color:rgba(0,127,134,.55); box-shadow:0 20px 42px rgba(0,0,0,.16); }"
+      "css": ".ds-card { max-width:72ch; border:1px solid var(--strong-divider,#cdd9d6); border-radius:var(--radius,8px); padding:24px; background:#fff; color:var(--ink,#162029); box-shadow:0 12px 30px rgba(0,0,0,.08); font:400 16px/1.55 Aptos,'Segoe UI',Arial,sans-serif; } .ds-card h3 { margin:0 0 10px; color:var(--navy,#12314a); font-size:21px; } .ds-card p { margin:0; color:var(--muted,#5d6770); } .ds-card:focus-within { border-color:rgba(0,127,134,.55); box-shadow:0 20px 42px rgba(0,0,0,.16); }"
     },
     {
       "name": "Registration Tabs",
@@ -167,7 +221,7 @@
       "refersTo": "tab-selected",
       "description": "Three attendee-role choices with one selected tab stop.",
       "html": "<div class=\"ds-tabs\" role=\"tablist\" aria-label=\"Attendee Registration Forms\"><button role=\"tab\" aria-selected=\"true\">Franchise Owner</button><button role=\"tab\" aria-selected=\"false\">Employee</button><button role=\"tab\" aria-selected=\"false\">Vendor</button></div>",
-      "css": ".ds-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-bottom:1px solid #c4d7d6; background:#dbeeee; } .ds-tabs button { min-height:58px; border:0; border-right:1px solid var(--line,#dfe4e2); padding:0 12px; background:transparent; color:var(--navy,#12314a); font:900 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; } .ds-tabs button:last-child { border-right:0; } .ds-tabs button[aria-selected='true'] { background:#fff; color:var(--teal-dark,#00636a); box-shadow:inset 0 -4px 0 var(--coral,#e95f45); } .ds-tabs button:hover,.ds-tabs button:focus-visible { background:var(--deep-navy,#0b2235); color:#fff; box-shadow:inset 0 -4px 0 var(--lime,#8cc63f); } .ds-tabs button:focus-visible { outline:3px solid var(--coral,#e95f45); outline-offset:3px; }"
+      "css": ".ds-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-bottom:1px solid var(--tab-divider,#c4d7d6); background:#dbeeee; } .ds-tabs button { min-height:58px; border:0; border-right:1px solid var(--line,#dfe4e2); padding:0 12px; background:transparent; color:var(--navy,#12314a); font:900 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; } .ds-tabs button:last-child { border-right:0; } .ds-tabs button[aria-selected='true'] { background:#fff; color:var(--teal-dark,#00636a); box-shadow:inset 0 -4px 0 var(--coral,#e95f45); } .ds-tabs button:hover,.ds-tabs button:focus-visible { background:var(--deep-navy,#0b2235); color:#fff; box-shadow:inset 0 -4px 0 var(--lime,#8cc63f); } .ds-tabs button:focus-visible { outline:3px solid var(--accessible-focus-coral,#cf4b36); outline-offset:3px; }"
     },
     {
       "name": "Embedded Form Recovery",
@@ -175,7 +229,7 @@
       "refersTo": "notice",
       "description": "A compact, truthful cross-origin failure state with direct and retry recovery.",
       "html": "<section class=\"ds-form-recovery\" aria-label=\"Registration Form Recovery\"><p role=\"status\">The embedded form could not load.</p><a href=\"#\">Open Form in a New Tab</a><button>Retry Embedded Form</button></section>",
-      "css": ".ds-form-recovery { display:grid; min-height:180px; place-items:center; align-content:center; gap:12px; border:1px solid #cdd9d6; border-radius:var(--radius,8px); padding:24px; background:#f5fbfb; color:var(--navy,#12314a); font:800 14px/1.4 Aptos,'Segoe UI',Arial,sans-serif; text-align:center; } .ds-form-recovery p { margin:0; } .ds-form-recovery a,.ds-form-recovery button { display:inline-flex; min-height:44px; align-items:center; color:var(--teal-dark,#00636a); font-weight:900; text-decoration:underline; text-underline-offset:4px; } .ds-form-recovery button { border:0; background:transparent; cursor:pointer; } .ds-form-recovery a:focus-visible,.ds-form-recovery button:focus-visible { outline:3px solid var(--coral,#e95f45); outline-offset:3px; }"
+      "css": ".ds-form-recovery { display:grid; min-height:180px; place-items:center; align-content:center; gap:12px; border:1px solid var(--strong-divider,#cdd9d6); border-radius:var(--radius,8px); padding:24px; background:#f5fbfb; color:var(--navy,#12314a); font:800 14px/1.4 Aptos,'Segoe UI',Arial,sans-serif; text-align:center; } .ds-form-recovery p { margin:0; } .ds-form-recovery a,.ds-form-recovery button { display:inline-flex; min-height:44px; align-items:center; color:var(--teal-dark,#00636a); font-weight:900; text-decoration:underline; text-underline-offset:4px; } .ds-form-recovery button { border:0; background:transparent; cursor:pointer; } .ds-form-recovery a:focus-visible,.ds-form-recovery button:focus-visible { outline:3px solid var(--accessible-focus-coral,#cf4b36); outline-offset:3px; }"
     },
     {
       "name": "Convention Fact Panel",
@@ -188,28 +242,33 @@
   ],
   "narrative": {
     "northStar": "The Riviera Registration Desk",
-    "overview": "The experience should feel like arriving at a well-run FCI registration desk set inside the Riviera destination: unmistakably branded, calm under pressure, and warm enough to build anticipation. Operational truth leads every composition, while approved photography and the sunlit accent palette keep the page from feeling administrative.\n\nThe system pairs a structured navy frame with warm paper surfaces, decisive lime actions, accessible teal wayfinding, and restrained coral signals. Real event and resort imagery supplies atmosphere; the interface supplies sequence, recovery, and confidence. It is a registration tool with hospitality, not a generic conference template.",
+    "overview": "The experience should feel like arriving at a well-run FCI registration desk set inside the Riviera destination: unmistakably branded, calm under pressure, and warm enough to build anticipation. Operational truth leads every composition, while approved photography and the sunlit accent palette keep the page from feeling administrative.\n\nThe system pairs a structured navy frame with warm paper surfaces, decisive lime actions, accessible teal wayfinding, and restrained coral signals. Verified prior-convention and resort imagery supplies atmosphere; the interface supplies sequence, recovery, and confidence. It is a registration tool with hospitality, not a generic conference template.",
     "keyCharacteristics": [
       "Registration-first hierarchy with fees, attendee forms, and hotel follow-through kept explicit.",
       "Deep navy structure, warm paper reading surfaces, and rare high-energy lime actions.",
       "Editorial serif headlines paired with a practical system sans-serif for operations.",
-      "Approved FCI, convention, speaker, and resort assets instead of invented visual proof.",
+      "Approved FCI, verified prior-convention, speaker, and resort assets instead of invented visual proof.",
       "Responsive behavior that stays complete from 320px through wide desktop and at 200% reflow.",
       "Motion that supports state but disappears cleanly when reduced motion is requested."
     ],
     "rules": [
       { "name": "The Registration Color Rule", "body": "Lime identifies the next primary action; do not spend it on general decoration.", "section": "colors" },
-      { "name": "The Signal Rule", "body": "Coral may mark selection, focus, or policy emphasis, but normal-size text on light surfaces uses the darker teal, navy, or policy-ink role.", "section": "colors" },
+      { "name": "The Signal Rule", "body": "Warm Signal Coral marks selection and policy emphasis. Accessible Focus Coral marks focus on light surfaces; Warm Signal Coral or white may mark focus on navy and photographic surfaces.", "section": "colors" },
+      { "name": "The Focus Contrast Rule", "body": "A focus indicator contrasts at least 3:1 with the immediately adjacent surface and never relies on color alone.", "section": "colors" },
       { "name": "The Two-Voice Rule", "body": "Serif type establishes destination and occasion; sans-serif type carries every task, status, and decision.", "section": "typography" },
       { "name": "The Sentence Rule", "body": "Fragments and interface labels use Title Case; complete sentences retain sentence case and normal punctuation.", "section": "typography" },
       { "name": "The Operational-First Rule", "body": "Fees, role selection, registration recovery, and hotel follow-through appear before galleries or optional sponsorship details.", "section": "layout" },
+      { "name": "The Safe-Area Rule", "body": "Full-bleed decorative media may extend into device insets; essential text, controls, sticky navigation, dialogs, and fixed controls stay inside the safe content box.", "section": "layout" },
+      { "name": "The Responsive Media Rule", "body": "Routine images use responsive WebP candidates, intrinsic dimensions, and truthful sizes; full JPEGs are fallback or explicit-enlargement sources.", "section": "layout" },
       { "name": "The Neutral Elevation Rule", "body": "Shadows are black with transparency and a visible vertical offset; brand-colored glows and zero-offset halos do not belong in this system.", "section": "elevation" },
       { "name": "The Reduced-Motion Rule", "body": "Reduced motion keeps state, focus, and hierarchy visible while removing scroll animation, image scaling, lifts, and transition timing.", "section": "elevation" },
+      { "name": "The Motion Contrast Rule", "body": "Scroll choreography never fades or filters text and controls that remain readable or interactive below WCAG AA at any intermediate frame.", "section": "elevation" },
+      { "name": "The Photo Provenance Rule", "body": "Public convention-photo labels describe visible scenes year-neutrally unless a capture year is materially relevant and independently verified.", "section": "imagery" },
       { "name": "The One Silhouette Rule", "body": "Use the 8px surface family for cards, notices, forms, images, and dialogs; reserve circles and pills for controls whose compact function earns them.", "section": "shapes" }
     ],
     "dos": [
       "Do lead visitors from fee understanding to one form per attendee, then to the separate hotel step.",
-      "Do use the approved FCI tertiary logo and approved event, speaker, and resort imagery at their natural aspect ratios.",
+      "Do use the approved FCI tertiary logo, verified prior-convention imagery, and approved speaker and resort imagery at their natural aspect ratios.",
       "Do keep instructional copy within the 65–75 character reading measure and maintain document-level reflow at every supported width.",
       "Do keep direct-form fallbacks visible before cross-origin embeds and make loading, failure, retry, and no-JavaScript states truthful.",
       "Do preserve 44px controls, visible focus, WCAG AA text contrast, and the reduced-motion alternative in every new component.",
@@ -221,6 +280,7 @@
       "Don't use lime as ambient decoration, coral as normal-size text on light surfaces, or brand-colored shadows as depth.",
       "Don't add autoplaying or eagerly loaded video; playback remains explicit, desktop-only, Save-Data-aware, and disabled for reduced motion.",
       "Don't place essential fees, role choice, recovery, or hotel continuity behind decorative proof or a gallery.",
+      "Don't assign a capture year to convention photography from a filename, caption history, or assumption.",
       "Don't introduce generic conference claims, fabricated testimonials, decorative icons, gradients in text, or a dark-mode contract without product approval."
     ]
   }
