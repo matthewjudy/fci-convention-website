@@ -1,8 +1,8 @@
 # Hannah Convention Content Release Record
 
-**Status:** In progress; implementation and production verification are pending.  
-**Recorded:** August 21, 2026  
-**Source:** Katherine Judy's forwarded Outlook thread `Fw: convention website`, received August 21, 2026, specifically Hannah Connolly's August 20 edits  
+**Status:** In progress; implementation and production verification are pending.
+**Recorded:** August 21, 2026
+**Source:** Katherine Judy's forwarded Outlook thread `Fw: convention website`, received August 21, 2026, specifically Hannah Connolly's August 20 edits
 **Tracking:** [Issue #26](https://github.com/matthewjudy/fci-convention-website/issues/26), [Issue #27](https://github.com/matthewjudy/fci-convention-website/issues/27), and [Issue #28](https://github.com/matthewjudy/fci-convention-website/issues/28)
 
 This document is the durable source, scope, and verification record for the August 21 convention-content update. It deliberately separates requested content from release evidence. Nothing in this record alone establishes that the changes have reached production.
