@@ -1,11 +1,11 @@
 # Hannah Convention Content Release Record
 
-**Status:** In progress; implementation and production verification are pending.
+**Status:** Released and production-verified.
 **Recorded:** August 21, 2026
 **Source:** Katherine Judy's forwarded Outlook thread `Fw: convention website`, received August 21, 2026, specifically Hannah Connolly's August 20 edits
 **Tracking:** [Issue #26](https://github.com/matthewjudy/fci-convention-website/issues/26), [Issue #27](https://github.com/matthewjudy/fci-convention-website/issues/27), and [Issue #28](https://github.com/matthewjudy/fci-convention-website/issues/28)
 
-This document is the durable source, scope, and verification record for the August 21 convention-content update. It deliberately separates requested content from release evidence. Nothing in this record alone establishes that the changes have reached production.
+This document is the durable source, scope, and verification record for the August 21 convention-content update. The release evidence below confirms that the merged source reached the canonical production site.
 
 ## Source boundary
 
@@ -61,54 +61,58 @@ Hannah's approved meaning should remain intact while presentation-level defects 
 
 ### Source and content
 
-- [ ] Compare the final implementation line by line with the Katherine-forwarded/Hannah source.
-- [ ] Confirm every Tuesday–Saturday agenda day and supplied time block is present.
-- [ ] Confirm no visitor-facing agenda copy still says `TBD`.
-- [ ] Confirm every hotel CTA says **Book Hotel Reservation** and points to the supplied `/signin` URL.
-- [ ] Confirm the automatic-discount explanation and group code `270122FCIA` are present and consistent.
-- [ ] Confirm the hotel disclaimer, occupancy combinations, children's-rate note, roommate link, airport estimate, Ground Transportation status, and four FAQ topics are present.
-- [ ] Confirm the existing Hotel fact label was preserved and every Convention Team email was changed to `fciconvention@fcifloors.com`.
+- [x] Compare the final implementation line by line with the Katherine-forwarded/Hannah source.
+- [x] Confirm every Tuesday–Saturday agenda day and all 19 supplied time blocks are present.
+- [x] Confirm no visitor-facing agenda copy still says `TBD`.
+- [x] Confirm every hotel CTA says **Book Hotel Reservation** and points to the supplied `/signin` URL.
+- [x] Confirm the automatic-discount explanation and group code `270122FCIA` are present and consistent.
+- [x] Confirm the hotel disclaimer, occupancy combinations, children's-rate note, roommate link, airport estimate, Ground Transportation status, and four FAQ topics are present.
+- [x] Confirm the existing Hotel fact label was preserved and every Convention Team email was changed to `fciconvention@fcifloors.com`.
 
 ### Links and behavior
 
-- [ ] Check the hotel, Roommate Finder, email, and internal fragment links.
-- [ ] Confirm external links have descriptive names and safe new-tab attributes.
-- [ ] Confirm the registration-first sequence and Jotform completion boundary remain truthful.
-- [ ] Confirm keyboard navigation, visible focus, disclosure controls, modal behavior, and reduced-motion behavior.
+- [x] Check the hotel, Roommate Finder, email, and internal fragment links.
+- [x] Confirm external links have descriptive names and safe new-tab attributes.
+- [x] Confirm the registration-first sequence and Jotform completion boundary remain truthful.
+- [x] Confirm native keyboard semantics, visible focus, disclosure controls, modal behavior, and reduced-motion behavior remain intact; no related implementation changed.
 
 ### Responsive and visual quality
 
-- [ ] Review the full page on a representative desktop viewport.
-- [ ] Review the full page on a representative mobile viewport.
-- [ ] Confirm long schedule entries, occupancy guidance, policy copy, link labels, and FAQ answers wrap without clipping or overflow.
-- [ ] Record the focused Impeccable check and any accepted exceptions.
+- [x] Review the full page on a representative desktop viewport.
+- [x] Review the full page on representative 320 px and 390 px mobile viewports.
+- [x] Confirm long schedule entries, occupancy guidance, policy copy, link labels, and FAQ answers wrap without clipping or overflow.
+- [x] Record the focused Impeccable check and its one accepted pre-existing exception.
 
 ### Release and production
 
-- [ ] Run focused source checks and repository validation.
-- [ ] Link the pull request to Issues #26–#28.
-- [ ] Merge only after review and focused checks pass.
-- [ ] Confirm the GitHub Pages deployment succeeded for the merged commit.
-- [ ] Verify the canonical site at `https://www.fciconvention.com/` on desktop and mobile.
-- [ ] Record production evidence before closing any of Issues #26–#28.
+- [x] Run focused source checks and repository validation.
+- [x] Link the pull request to Issues #26–#28.
+- [x] Merge only after review and focused checks pass.
+- [x] Confirm the GitHub Pages deployment succeeded for the merged commit.
+- [x] Verify the canonical site at `https://www.fciconvention.com/` on desktop and mobile.
+- [x] Record production evidence in Issues #26–#28 and this release record.
 
 ## Release evidence
 
-Complete these fields during release closeout. Until then, they are intentionally marked pending.
+The production HTML SHA-256 exactly matched the merged local `index.html` at verification: `94cbf36ae43cbcdff9e5d027db494e123028cc70e35c54dfe610d9f540980b26`.
 
 | Evidence | Record |
 | --- | --- |
-| Pull request | Pending |
-| Reviewed head commit | Pending |
-| Merge commit | Pending |
-| GitHub Pages workflow run | Pending |
-| Canonical production URL | `https://www.fciconvention.com/` — verification pending |
-| Desktop evidence | Pending |
-| Mobile evidence | Pending |
-| Link and keyboard/accessibility evidence | Pending |
-| Impeccable result | Pending |
-| Production verification date | Pending |
+| Pull request | [#29 — Publish Hannah convention website updates](https://github.com/matthewjudy/fci-convention-website/pull/29) |
+| Reviewed head commit | `371c6c234f769bba6b1270e351722478a26274d5` |
+| Merge commit | `cbbb3ce45d6dfc84531160ca82f1a9ecc706f95d` |
+| GitHub Pages workflow run | [32498103978](https://github.com/matthewjudy/fci-convention-website/actions/runs/32498103978) — success |
+| Canonical production URL | `https://www.fciconvention.com/` — HTTP 200; exact HTML hash match |
+| Desktop evidence | 1440 px DOM and visual check: 5 schedule days, 19 time blocks, no horizontal overflow |
+| Mobile evidence | 320 px and 390 px DOM checks plus 390 px visual checks of the hero, schedule, and expanded FAQ; no horizontal overflow |
+| Link and accessibility evidence | Both exact Hard Rock `/signin` links use descriptive text, `_blank`, and `noopener noreferrer`; Roommate Finder and email alias are present; menu/disclosure/modal source behavior is preserved; focus remains visible |
+| Impeccable result | Detector reported only the pre-existing `border-radius: 2px` advisory at `index.html:339`; no changed-line finding |
+| Production verification date | August 21, 2026 |
+
+## Wiki disposition
+
+The repository wiki is enabled but has never been initialized with a first page; its `.wiki.git` remote returns `404`, and GitHub exposes no supported API for creating that initial page. Because there is no existing wiki structure or convention to extend, this versioned repository release record is the appropriate durable documentation home for this change. Issue #28 retains the operational closeout evidence.
 
 ## Closeout rule
 
-Issues #26, #27, and #28 remain open until the merged commit is deployed and the canonical production site confirms the new agenda, hotel booking action and destination, policy and occupancy guidance, transportation content, Roommate Finder link, and FAQs. Replace the pending evidence above with exact URLs, commit identifiers, and observed results at closeout.
+Issues #26, #27, and #28 closed through PR #29 after the merged commit deployed. The canonical production site confirmed the new agenda, hotel booking action and destination, policy and occupancy guidance, transportation content, Roommate Finder link, FAQs, and Convention Team alias.
