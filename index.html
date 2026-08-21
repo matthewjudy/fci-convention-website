@@ -1239,6 +1239,43 @@
         color: var(--navy);
       }
 
+      .event-row h3 {
+        margin: 0 0 10px;
+        color: var(--navy);
+        font-family: "Aptos", "Segoe UI", Arial, sans-serif;
+        font-size: 21px;
+        line-height: 1.2;
+      }
+
+      .schedule-slots {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .schedule-slots li {
+        display: grid;
+        grid-template-columns: minmax(150px, 0.34fr) minmax(0, 1fr);
+        gap: 16px;
+        padding-top: 8px;
+        border-top: 1px solid var(--line);
+      }
+
+      .schedule-time {
+        color: var(--teal-dark);
+        font-weight: 900;
+      }
+
+      .schedule-note {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
       .event-date {
         color: var(--teal-dark);
         font-size: 14px;
@@ -2033,6 +2070,10 @@
           grid-template-columns: 1fr;
         }
 
+        .schedule-slots li {
+          grid-template-columns: minmax(138px, 0.4fr) minmax(0, 1fr);
+        }
+
         .journey-steps {
           gap: 18px;
           margin-top: 24px;
@@ -2149,6 +2190,11 @@
         .wrap {
           padding-right: max(14px, env(safe-area-inset-right, 0px));
           padding-left: max(14px, env(safe-area-inset-left, 0px));
+        }
+
+        .schedule-slots li {
+          grid-template-columns: 1fr;
+          gap: 2px;
         }
 
         h1 {
@@ -2408,7 +2454,7 @@
             <h1>2027 Convention Registration</h1>
             <p class="hero-copy">
               Join us Tuesday, February 2 through Friday, February 5, 2027 at Hard Rock Riviera Maya.
-              Agenda details, additional speakers, and convention information are coming soon.
+              Review the convention schedule, register each attendee, and plan for Saturday, February 6 departures.
             </p>
             <div class="actions">
               <a class="btn" href="#register">Start Registration</a>
@@ -2419,7 +2465,7 @@
             <dl>
               <div>
                 <dt>Dates</dt>
-                <dd>Tuesday, February 2 - Friday, February 5, 2027</dd>
+                <dd>Tuesday, February 2–Friday, February 5, 2027</dd>
               </div>
               <div>
                 <dt>Hotel</dt>
@@ -2430,7 +2476,7 @@
                 <dd>Tuesday Evening</dd>
               </div>
               <div>
-                <dt>Closing Bash</dt>
+                <dt>Blowout Bash</dt>
                 <dd>Friday Evening</dd>
               </div>
             </dl>
@@ -2484,7 +2530,7 @@
               <a href="#register">Complete Convention Registration<span>Submit one role-specific form for every attendee badge.</span></a>
             </li>
             <li>
-              <a href="#hotel">Reserve the Hotel<span>Continue to the separate Hard Rock group reservation flow.</span></a>
+              <a href="#hotel">Book Hotel Reservation<span>Continue to the separate Hard Rock group reservation flow.</span></a>
             </li>
           </ol>
         </div>
@@ -2649,13 +2695,14 @@
       <section class="section navy" id="hotel">
         <div class="wrap split">
           <div>
-            <h2>Step 2: Reserve your hotel.</h2>
+            <h2>Step 2: Book your hotel reservation.</h2>
             <p class="lead">
               After successfully submitting each attendee registration, use the separate Hard Rock Riviera Maya group reservation link.
             </p>
-            <p>The hotel page opens in a new tab. Rates and availability are managed by the resort.</p>
+            <p>The FCI discount is automatically applied through the booking link. The group code is <strong>270122FCIA</strong>.</p>
+            <p>The hotel page opens in a new tab. Rates, availability, and hotel policies are managed by the resort.</p>
             <div class="actions">
-              <a class="btn" href="https://hotel.reservations.hardrock.com/?adult=2&amp;arrive=2027-01-31&amp;chain=13924&amp;child=0&amp;config=GPS20&amp;currency=USD&amp;depart=2027-02-07&amp;dest=AIC&amp;group=270122FCIA&amp;hotel=59660&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1&amp;theme=Groups20" target="_blank" rel="noopener noreferrer">Open Hotel Reservation<span class="sr-only"> opens in a new tab</span></a>
+              <a class="btn" href="https://hotel.reservations.hardrock.com/signin?adult=2&amp;arrive=2027-01-31&amp;chain=13924&amp;child=0&amp;config=GPS20&amp;currency=USD&amp;depart=2027-02-07&amp;dest=AIC&amp;group=270122FCIA&amp;hotel=59660&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1&amp;theme=Groups20" target="_blank" rel="noopener noreferrer">Book Hotel Reservation<span class="sr-only"> opens in a new tab</span></a>
               <a class="btn secondary" href="https://hotel.hardrock.com/riviera-maya/" target="_blank" rel="noopener noreferrer">View Resort Website<span class="sr-only"> opens in a new tab</span></a>
             </div>
           </div>
@@ -2675,18 +2722,35 @@
       <section class="section white" id="schedule">
         <div class="wrap">
           <div class="section-head">
-            <h2>Confirmed Schedule Highlights</h2>
+            <h2>Convention Schedule</h2>
           </div>
-          <div class="event-list" role="list" aria-label="Confirmed Convention Schedule Highlights">
+          <div class="event-list" role="list" aria-label="Convention Schedule">
             <article class="event-row" role="listitem">
-              <div class="event-date">Tue, Feb 2</div>
-              <div><strong>Welcome Party</strong><p>The Welcome Party is Tuesday evening. Additional details are coming soon.</p></div>
+              <time class="event-date" datetime="2027-02-02">Tue, Feb 2</time>
+              <div>
+                <h3>Arrival and Welcome Party</h3>
+                <ul class="schedule-slots">
+                  <li><span class="schedule-time">All Day</span><span>Departures from home U.S. and Canadian cities to Cancún</span></li>
+                  <li><span class="schedule-time">Afternoon</span><span>Arrival in Riviera Maya</span></li>
+                  <li><span class="schedule-time">Afternoon</span><span>Check-In at Hard Rock Riviera Maya</span></li>
+                  <li><span class="schedule-time">1:00–7:00 PM</span><span>FCI Convention Registration</span></li>
+                  <li><span class="schedule-time">5:00–6:00 PM</span><span>Women in the Flooring Industry Cocktails</span></li>
+                  <li><span class="schedule-time">6:00–7:00 PM</span><span>First-Time Franchisee Welcome Reception</span></li>
+                  <li><span class="schedule-time">7:00–10:00 PM</span><span>Welcome Party <small class="schedule-note">Dinner is provided at this event.</small></span></li>
+                </ul>
+              </div>
             </article>
             <article class="event-row featured-event" role="listitem">
-              <div class="event-date">Wed, Feb 3</div>
+              <time class="event-date" datetime="2027-02-03">Wed, Feb 3</time>
               <div>
-                <span class="event-kicker">Featured Keynote</span>
-                <strong>Daymond John</strong>
+                <h3>Main Stage and Awards Banquet</h3>
+                <ul class="schedule-slots">
+                  <li><span class="schedule-time">8:00 AM–3:00 PM</span><span>Main Stage Keynotes and Breakout Sessions</span></li>
+                  <li><span class="schedule-time">3:00–5:30 PM</span><span>Networking Pool Time</span></li>
+                  <li><span class="schedule-time">6:00–7:00 PM</span><span>Awards Banquet Cocktail Reception</span></li>
+                  <li><span class="schedule-time">7:00–10:00 PM</span><span>Awards Banquet <small class="schedule-note">Dinner is provided at this event.</small></span></li>
+                </ul>
+                <span class="event-kicker">Featured Keynote: Daymond John</span>
                 <p>Daymond John's 5 Shark Points: Fundamentals for Success in Business and Life.</p>
                 <div class="speaker-actions">
                   <button class="btn text" type="button" data-speaker-modal="daymond">View Speaker Bio</button>
@@ -2695,12 +2759,36 @@
               <img class="speaker-thumb" src="assets/speakers/daymond-john.jpg" width="300" height="400" loading="lazy" decoding="async" alt="Daymond John" />
             </article>
             <article class="event-row" role="listitem">
-              <div class="event-date">Thu, Feb 4</div>
-              <div><strong>Convention Programming</strong><p>The agenda is TBD. Additional speaker details are coming soon.</p></div>
+              <time class="event-date" datetime="2027-02-04">Thu, Feb 4</time>
+              <div>
+                <h3>Main Stage, Vendor Showcase, and Casino Night</h3>
+                <ul class="schedule-slots">
+                  <li><span class="schedule-time">8:00 AM–3:00 PM</span><span>Main Stage Keynotes and Breakout Sessions</span></li>
+                  <li><span class="schedule-time">3:30–7:00 PM</span><span>Vendor Showcase</span></li>
+                  <li><span class="schedule-time">7:30–10:30 PM</span><span>Casino Night <small class="schedule-note">Dinner is provided for Casino Night attendees only. All other attendees are encouraged to make a reservation upon arrival at Hard Rock Riviera Maya.</small></span></li>
+                </ul>
+              </div>
             </article>
             <article class="event-row" role="listitem">
-              <div class="event-date">Fri, Feb 5</div>
-              <div><strong>Closing Bash</strong><p>The Closing Bash is Friday evening. Additional details are coming soon.</p></div>
+              <time class="event-date" datetime="2027-02-05">Fri, Feb 5</time>
+              <div>
+                <h3>Vendor Showcase and Blowout Bash</h3>
+                <ul class="schedule-slots">
+                  <li><span class="schedule-time">7:00 AM–3:00 PM</span><span>Vendor Showcase Continued</span></li>
+                  <li><span class="schedule-time">8:00 AM–3:00 PM</span><span>Main Stage Keynotes, Breakout Sessions, and Round Tables</span></li>
+                  <li><span class="schedule-time">3:00–6:30 PM</span><span>Networking Pool Time</span></li>
+                  <li><span class="schedule-time">7:00–10:30 PM</span><span>Blowout Bash <small class="schedule-note">Dinner is provided at this event.</small></span></li>
+                </ul>
+              </div>
+            </article>
+            <article class="event-row" role="listitem">
+              <time class="event-date" datetime="2027-02-06">Sat, Feb 6</time>
+              <div>
+                <h3>Departure Day</h3>
+                <ul class="schedule-slots">
+                  <li><span class="schedule-time">All Day</span><span>Departures from Riviera Maya to home U.S. and Canadian cities</span></li>
+                </ul>
+              </div>
             </article>
           </div>
         </div>
@@ -2848,7 +2936,7 @@
                   <summary>Convention Fees and Attendance</summary>
                   <div class="faq-answer">
                     <p>If you own multiple territories or franchises, the convention fee applies once. The business registration fee includes one franchisee, and each additional attendee has a separate fee.</p>
-                    <p>The registration fee includes onsite food and drinks during convention dates, convention-related events, the Welcome Party, vendor showcase, Closing Bash, swag gifts, and related programming.</p>
+                    <p>The registration fee includes onsite food and drinks during convention dates, convention-related events, the Welcome Party, vendor showcase, Blowout Bash, swag gifts, and related programming.</p>
                     <p>If the business cancels and does not attend, the full convention fee will be charged.</p>
                   </div>
                 </details>
@@ -2856,7 +2944,7 @@
                   <summary>Badge Details and Registration Help</summary>
                   <div class="faq-answer">
                     <p>Your badge will display your first and last name, branch name, and participant type. It will reflect what you enter on the convention registration form, so check spelling carefully.</p>
-                    <p>Email <a href="mailto:fciconvention@floorcoveringsinternational.com">fciconvention@floorcoveringsinternational.com</a> for convention registration questions.</p>
+                    <p>Email <a href="mailto:fciconvention@fcifloors.com">fciconvention@fcifloors.com</a> for convention registration questions.</p>
                   </div>
                 </details>
               </div>
@@ -2868,6 +2956,7 @@
                 <details class="faq-item">
                   <summary>Hotel Rates and Payment</summary>
                   <div class="faq-answer">
+                    <p><strong>Please Note:</strong> The hotel sets the hotel policies outlined below, and FCI is unable to make any changes. Exceptions, if any, are at the discretion of the hotel.</p>
                     <p>These are the published convention planning rates. Confirm the final rate, occupancy terms, taxes, fees, and availability in the Hard Rock reservation flow.</p>
                     <ul class="rate-list" aria-label="Hotel Room Rates">
                       <li><span>Double Occupancy</span><strong>$549</strong></li>
@@ -2876,15 +2965,29 @@
                       <li><span>Children Ages 13-17</span><strong>$76</strong></li>
                       <li><span>Kids 12 and under sharing the room with their parents are $0 per child, per night (<strong>maximum 2 free kids per room</strong>)</span><strong>$0</strong></li>
                     </ul>
+                    <p>The maximum room occupancy may be any of these combinations:</p>
+                    <ul>
+                      <li>3 adults and no children</li>
+                      <li>3 adults and 1 child</li>
+                      <li>2 adults and 2 children</li>
+                      <li>1 adult and 3 children</li>
+                    </ul>
+                    <p>Children's rates will be paid at check-in. They will not be calculated online through the booking link because each child's age must be verified.</p>
                     <p>The hotel will charge three nights when the reservation is made. The remaining balance will be paid on arrival.</p>
                   </div>
                 </details>
                 <details class="faq-item">
                   <summary>Reservations, Changes, and Cancellations</summary>
                   <div class="faq-answer">
-                    <p><strong>Reserve:</strong> Use the <a href="https://hotel.reservations.hardrock.com/?adult=2&amp;arrive=2027-01-31&amp;chain=13924&amp;child=0&amp;config=GPS20&amp;currency=USD&amp;depart=2027-02-07&amp;dest=AIC&amp;group=270122FCIA&amp;hotel=59660&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1&amp;theme=Groups20" target="_blank" rel="noopener noreferrer">Hard Rock Riviera Maya group reservation link<span class="sr-only"> opens in a new tab</span></a>.</p>
-                    <p><strong>Change:</strong> Use <strong>My Bookings</strong> on the Hard Rock reservation site or call <a href="tel:+529848751100">+52-984-875-1100</a>. Changes depend on availability and are not permitted within 30 days of arrival. Transportation update instructions are coming soon.</p>
+                    <p><strong>Book:</strong> Use the <a href="https://hotel.reservations.hardrock.com/signin?adult=2&amp;arrive=2027-01-31&amp;chain=13924&amp;child=0&amp;config=GPS20&amp;currency=USD&amp;depart=2027-02-07&amp;dest=AIC&amp;group=270122FCIA&amp;hotel=59660&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1&amp;theme=Groups20" target="_blank" rel="noopener noreferrer">Hard Rock Riviera Maya group reservation link<span class="sr-only"> opens in a new tab</span></a>. The FCI discount and group code <strong>270122FCIA</strong> are automatically applied.</p>
+                    <p><strong>Change:</strong> Use <strong>My Bookings</strong> on the Hard Rock reservation site or call <a href="tel:+529848751100">+52-984-875-1100</a>. Changes depend on availability and are not permitted within 30 days of arrival.</p>
                     <p><strong>Cancel:</strong> Cancel at least 30 days before arrival to preserve the deposit. A no-show forfeits the full deposit.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary>Roommate Finder</summary>
+                  <div class="faq-answer">
+                    <p>Looking for someone to share a room? Add your information to the <a href="https://fciemail-my.sharepoint.com/:x:/g/personal/hconnolly_floorcoveringsinternational_com/IQA_hFZL0Kz-Qa4F9c2lSKl2ATP1H0J51TRpZlLYVUON7GE?e=xbTicq" target="_blank" rel="noopener noreferrer">FCI Convention Roommate Finder<span class="sr-only"> opens in a new tab</span></a>.</p>
                   </div>
                 </details>
               </div>
@@ -2896,10 +2999,40 @@
                 <details class="faq-item">
                   <summary>Travel Preparation and Time Zone</summary>
                   <div class="faq-answer">
-                    <p>Airport transportation details and estimated travel time to Hard Rock Riviera Maya are coming soon.</p>
+                    <p>Airport transportation details are coming soon. Cancún International Airport is approximately 1.5 hours from Hard Rock Riviera Maya.</p>
                     <p>The registration forms ask guests to confirm that their passport will remain valid for at least six months after the scheduled return date, or to indicate that a passport is in process. Guests are responsible for required travel documents, visas, or passport renewals. Additional travel requirement details are coming soon.</p>
                     <p>Hard Rock Riviera Maya is in the Cancun/Riviera Maya time zone: Eastern Standard Time, UTC-5, year-round. Cancun does not observe daylight saving time.</p>
                     <p>During convention dates, Cancun is the same time as Eastern Time, 1 hour ahead of Central Time, 2 hours ahead of Mountain Time, and 3 hours ahead of Pacific Time.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary>Ground Transportation</summary>
+                  <div class="faq-answer">
+                    <p>All ground transportation information is coming soon.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary>Should I Use My Passport Spelling for My Hotel Reservation?</summary>
+                  <div class="faq-answer">
+                    <p>Yes. Use proper capitalization and spelling for all information, and enter your name exactly as it appears on your passport. Incorrect capitalization or spelling in your name, address, or other details will carry into subsequent records. For example, enter <strong>McGregor</strong> with a capital G. Your airline ticket name must match your passport exactly.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary>What Will the Weather Be Like?</summary>
+                  <div class="faq-answer">
+                    <p>Expect daytime temperatures in the low 80s and evening temperatures in the low 70s. Conditions are typically warm and sunny. Sunrise is about 7:30 AM and sunset about 6:30 PM.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary>Is the Water Safe to Drink?</summary>
+                  <div class="faq-answer">
+                    <p>Bottled water will be provided in your room and is safe to drink.</p>
+                  </div>
+                </details>
+                <details class="faq-item">
+                  <summary>What Is the Official Language?</summary>
+                  <div class="faq-answer">
+                    <p>Spanish is the official language, but English is widely spoken.</p>
                   </div>
                 </details>
               </div>
@@ -2916,9 +3049,9 @@
           <article class="card contact-card" aria-labelledby="contact-title">
             <h3 id="contact-title">FCI Convention Team</h3>
             <p>Email the FCI Convention Team with registration, hotel, or vendor questions.</p>
-            <p><a class="contact-address" href="mailto:fciconvention@floorcoveringsinternational.com">fciconvention@floorcoveringsinternational.com</a></p>
+            <p><a class="contact-address" href="mailto:fciconvention@fcifloors.com">fciconvention@fcifloors.com</a></p>
             <div class="contact-actions">
-              <a class="btn" href="mailto:fciconvention@floorcoveringsinternational.com?subject=2027%20FCI%20Convention%20Question">Open Email Draft</a>
+              <a class="btn" href="mailto:fciconvention@fcifloors.com?subject=2027%20FCI%20Convention%20Question">Open Email Draft</a>
               <button class="btn contact-copy" id="copy-contact-email" type="button">Copy Email Address</button>
             </div>
             <p class="fine">Opening a draft does not send the message. Review it in your email app, then send it there.</p>
@@ -2995,9 +3128,9 @@
         </div>
         <div class="footer-event">
           <h2>2027 Convention</h2>
-          <p>February 2–5, 2027<br />Hard Rock Riviera Maya</p>
+          <p>February 2–6, 2027<br />Hard Rock Riviera Maya</p>
           <address>
-            <a href="mailto:fciconvention@floorcoveringsinternational.com">Email the Convention Team</a>
+            <a href="mailto:fciconvention@fcifloors.com">Email the Convention Team</a>
           </address>
         </div>
         <nav class="footer-nav" aria-label="Convention Footer Navigation">
@@ -3564,7 +3697,7 @@
       });
 
       copyContactEmail?.addEventListener("click", async () => {
-        const email = "fciconvention@floorcoveringsinternational.com";
+        const email = "fciconvention@fcifloors.com";
         let copied = false;
 
         try {
