@@ -1457,7 +1457,84 @@
         align-items: center;
       }
 
+      .hotel-layout {
+        display: grid;
+        grid-template-areas:
+          "copy photo"
+          "policies policies";
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 42px 38px;
+        align-items: start;
+      }
+
+      .hotel-copy {
+        grid-area: copy;
+        max-width: 65ch;
+      }
+
+      .hotel-actions {
+        margin-top: 24px;
+      }
+
+      .hotel-roommate {
+        margin-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+        padding: 14px 0;
+      }
+
+      .hotel-roommate p {
+        margin: 0;
+      }
+
+      .hotel-roommate a {
+        color: var(--lime);
+        font-weight: 900;
+        text-underline-offset: 4px;
+      }
+
+      .hotel-policies {
+        grid-area: policies;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        padding-top: 32px;
+      }
+
+      .hotel-policy-heading {
+        display: grid;
+        grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+        gap: 30px;
+        align-items: start;
+      }
+
+      .hotel-policy-heading h3,
+      .hotel-policy-heading p {
+        margin: 0;
+      }
+
+      .hotel-policy-heading p {
+        max-width: 72ch;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .hotel-policy-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 32px;
+        margin: 24px 0 0;
+        padding-inline-start: 1.25em;
+      }
+
+      .hotel-policy-list li {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 16px 8px 16px 2px;
+      }
+
+      .hotel-policy-list li::marker {
+        color: var(--lime);
+      }
+
       .hotel-photo {
+        grid-area: photo;
         overflow: hidden;
         margin: 0;
         border-radius: var(--radius);
@@ -2079,6 +2156,20 @@
           grid-template-columns: 1fr;
         }
 
+        .hotel-layout {
+          grid-template-areas:
+            "copy"
+            "policies"
+            "photo";
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .hotel-policy-heading {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
         .schedule-slots li {
           grid-template-columns: minmax(138px, 0.4fr) minmax(0, 1fr);
         }
@@ -2268,6 +2359,14 @@
 
         .hotel-strip {
           grid-auto-columns: minmax(260px, 88%);
+        }
+
+        .hotel-actions .btn {
+          width: 100%;
+        }
+
+        .hotel-policy-list {
+          grid-template-columns: 1fr;
         }
 
         .photo-grid figure:first-child,
@@ -2702,19 +2801,35 @@
       </section>
 
       <section class="section navy" id="hotel">
-        <div class="wrap split">
-          <div>
+        <div class="wrap hotel-layout">
+          <div class="hotel-copy">
             <h2>Step 2: Book your hotel reservation.</h2>
             <p class="lead">
               After successfully submitting each attendee registration, use the separate Hard Rock Riviera Maya group reservation link.
             </p>
             <p>The FCI discount is automatically applied through the booking link. The group code is <strong>270122FCIA</strong>.</p>
             <p>The hotel page opens in a new tab. Rates, availability, and hotel policies are managed by the resort.</p>
-            <div class="actions">
+            <div class="actions hotel-actions">
               <a class="btn" href="https://hotel.reservations.hardrock.com/?adult=2&amp;arrive=2027-01-31&amp;chain=13924&amp;child=0&amp;config=GPS20&amp;currency=USD&amp;depart=2027-02-07&amp;dest=AIC&amp;group=270122FCIA&amp;hotel=59660&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1&amp;theme=Groups20" target="_blank" rel="noopener noreferrer">Book Hotel Reservation<span class="sr-only"> opens in a new tab</span></a>
+              <a class="btn secondary" href="https://hotel.reservations.hardrock.com/signin?adult=2&amp;arrive=2027-01-31&amp;chain=13924&amp;child=0&amp;config=GPS20&amp;currency=USD&amp;depart=2027-02-07&amp;dest=AIC&amp;group=270122FCIA&amp;hotel=59660&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1&amp;theme=Groups20" target="_blank" rel="noopener noreferrer">Change Hotel Reservation<span class="sr-only"> opens in a new tab</span></a>
               <a class="btn secondary" href="https://hotel.hardrock.com/riviera-maya/" target="_blank" rel="noopener noreferrer">View Resort Website<span class="sr-only"> opens in a new tab</span></a>
             </div>
+            <div class="hotel-roommate">
+              <p><strong>Need a roommate?</strong> Add your information to the <a href="https://fciemail-my.sharepoint.com/:x:/g/personal/hconnolly_floorcoveringsinternational_com/IQA_hFZL0Kz-Qa4F9c2lSKl2ATP1H0J51TRpZlLYVUON7GE?e=xbTicq" target="_blank" rel="noopener noreferrer">FCI Convention Roommate Finder<span class="sr-only"> opens in a new tab</span></a>.</p>
+            </div>
           </div>
+          <section class="hotel-policies" aria-labelledby="hotel-policies-title">
+            <div class="hotel-policy-heading">
+              <h3 id="hotel-policies-title">Hotel Policies</h3>
+              <p><strong>Please Note:</strong> The hotel sets the hotel policies outlined below, and FCI is unable to make any changes. Exceptions, if any, are at the discretion of the hotel.</p>
+            </div>
+            <ul class="hotel-policy-list">
+              <li>All individuals staying in the room must be listed on the reservation for ease at check-in. Names listed must match the passports used.</li>
+              <li>Attendees will be charged for a three-night stay at the time of booking. The remaining balance will be paid upon arrival.</li>
+              <li>If you need to cancel, cancellation must be made at least 30 days before your arrival date to avoid forfeiting the deposit. No-show penalty: full deposit. Modifications are not allowed within 30 days of arrival.</li>
+              <li>Children's rates will be paid at check-in. They will not be calculated online because each child's age must be verified on site during check-in.</li>
+            </ul>
+          </section>
           <figure class="hotel-photo">
             <picture>
               <source
