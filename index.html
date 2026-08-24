@@ -627,6 +627,15 @@
         font-size: 16px;
       }
 
+      .fee-includes {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
       .pricing-comparison tbody tr:last-child th,
       .pricing-comparison tbody tr:last-child td {
         border-bottom: 0;
@@ -1284,25 +1293,47 @@
       }
 
       .event-row.featured-event {
-        grid-template-columns: 170px minmax(0, 1fr) 150px;
-        align-items: center;
         border-color: rgba(233, 95, 69, 0.34);
         background:
           linear-gradient(135deg, rgba(255, 243, 238, 0.94), rgba(217, 241, 243, 0.72)),
           var(--white);
       }
 
+      .schedule-session {
+        min-width: 0;
+      }
+
+      .keynote-feature {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        align-items: start;
+        gap: 18px;
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(0, 99, 106, 0.24);
+      }
+
+      .keynote-copy {
+        min-width: 0;
+      }
+
       .event-kicker {
-        display: inline-flex;
+        display: block;
         margin-bottom: 8px;
         color: var(--teal-dark);
         font-size: 16px;
         font-weight: 900;
       }
 
+      .keynote-title {
+        margin: 0;
+        color: var(--ink);
+      }
+
       .speaker-thumb {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: auto;
+        aspect-ratio: 3 / 4;
         border: 4px solid var(--white);
         border-radius: var(--radius);
         object-fit: cover;
@@ -1448,7 +1479,84 @@
         align-items: center;
       }
 
+      .hotel-layout {
+        display: grid;
+        grid-template-areas:
+          "copy photo"
+          "policies policies";
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 42px 38px;
+        align-items: start;
+      }
+
+      .hotel-copy {
+        grid-area: copy;
+        max-width: 65ch;
+      }
+
+      .hotel-actions {
+        margin-top: 24px;
+      }
+
+      .hotel-roommate {
+        margin-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.24);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+        padding: 14px 0;
+      }
+
+      .hotel-roommate p {
+        margin: 0;
+      }
+
+      .hotel-roommate a {
+        color: var(--lime);
+        font-weight: 900;
+        text-underline-offset: 4px;
+      }
+
+      .hotel-policies {
+        grid-area: policies;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        padding-top: 32px;
+      }
+
+      .hotel-policy-heading {
+        display: grid;
+        grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+        gap: 30px;
+        align-items: start;
+      }
+
+      .hotel-policy-heading h3,
+      .hotel-policy-heading p {
+        margin: 0;
+      }
+
+      .hotel-policy-heading p {
+        max-width: 72ch;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .hotel-policy-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 32px;
+        margin: 24px 0 0;
+        padding-inline-start: 1.25em;
+      }
+
+      .hotel-policy-list li {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 16px 8px 16px 2px;
+      }
+
+      .hotel-policy-list li::marker {
+        color: var(--lime);
+      }
+
       .hotel-photo {
+        grid-area: photo;
         overflow: hidden;
         margin: 0;
         border-radius: var(--radius);
@@ -2070,6 +2178,20 @@
           grid-template-columns: 1fr;
         }
 
+        .hotel-layout {
+          grid-template-areas:
+            "copy"
+            "policies"
+            "photo";
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .hotel-policy-heading {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
         .schedule-slots li {
           grid-template-columns: minmax(138px, 0.4fr) minmax(0, 1fr);
         }
@@ -2095,13 +2217,6 @@
           gap: 4px;
           padding-top: 16px;
           padding-bottom: 16px;
-        }
-
-        .speaker-thumb {
-          width: 100%;
-          height: auto;
-          max-height: 260px;
-          object-fit: cover;
         }
 
         .speaker-modal-media img {
@@ -2261,6 +2376,14 @@
           grid-auto-columns: minmax(260px, 88%);
         }
 
+        .hotel-actions .btn {
+          width: 100%;
+        }
+
+        .hotel-policy-list {
+          grid-template-columns: 1fr;
+        }
+
         .photo-grid figure:first-child,
         .photo-grid figure.wide-feature {
           grid-column: span 2;
@@ -2269,6 +2392,14 @@
       }
 
       @media (max-width: 420px) {
+        .keynote-feature {
+          grid-template-columns: 1fr;
+        }
+
+        .speaker-thumb {
+          width: min(180px, 100%);
+        }
+
         .pricing-comparison table,
         .pricing-comparison thead,
         .pricing-comparison tbody,
@@ -2506,7 +2637,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">Business Registration Fee</th>
+                  <th scope="row">Business Registration Fee<span class="fee-includes">*includes registration for one franchisee</span></th>
                   <td data-label="Early Bird"><span class="fee-value">$749</span><span class="fee-timing">Before October 16</span></td>
                   <td data-label="Standard"><span class="fee-value">$1,149</span><span class="fee-timing">After October 16</span></td>
                 </tr>
@@ -2568,7 +2699,7 @@
                   <p><strong>Additional Attendee:</strong> $75 Early Bird / $199 Standard</p>
                   <p><strong>No Branch Attendee:</strong> $1,999 charge and out of compliance</p>
                 </div>
-                <p class="fine">The forms below do not collect fees. Early Bird pricing is before October 16 and Standard pricing is after October 16. If either registration or hotel booking will happen on October 16, <a href="#contact">confirm the timing</a>. <a href="#pricing">Review all fee details</a>.</p>
+                <p class="fine">The forms below do not collect fees. Early Bird pricing is before October 16 and Standard pricing is after October 16. If you will register or book your hotel on October 16, <a href="#contact">contact the Convention Team before registering or booking to confirm the applicable fee</a>. <a href="#pricing">Review all fee details</a>.</p>
               </aside>
 
               <div class="handoff-note">
@@ -2693,19 +2824,35 @@
       </section>
 
       <section class="section navy" id="hotel">
-        <div class="wrap split">
-          <div>
+        <div class="wrap hotel-layout">
+          <div class="hotel-copy">
             <h2>Step 2: Book your hotel reservation.</h2>
             <p class="lead">
               After successfully submitting each attendee registration, use the separate Hard Rock Riviera Maya group reservation link.
             </p>
             <p>The FCI discount is automatically applied through the booking link. The group code is <strong>270122FCIA</strong>.</p>
             <p>The hotel page opens in a new tab. Rates, availability, and hotel policies are managed by the resort.</p>
-            <div class="actions">
+            <div class="actions hotel-actions">
               <a class="btn" href="https://hotel.reservations.hardrock.com/?adult=2&amp;arrive=2027-01-31&amp;chain=13924&amp;child=0&amp;config=GPS20&amp;currency=USD&amp;depart=2027-02-07&amp;dest=AIC&amp;group=270122FCIA&amp;hotel=59660&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1&amp;theme=Groups20" target="_blank" rel="noopener noreferrer">Book Hotel Reservation<span class="sr-only"> opens in a new tab</span></a>
+              <a class="btn secondary" href="https://hotel.reservations.hardrock.com/signin?adult=2&amp;arrive=2027-01-31&amp;chain=13924&amp;child=0&amp;config=GPS20&amp;currency=USD&amp;depart=2027-02-07&amp;dest=AIC&amp;group=270122FCIA&amp;hotel=59660&amp;level=hotel&amp;locale=en-US&amp;productcurrency=USD&amp;rooms=1&amp;theme=Groups20" target="_blank" rel="noopener noreferrer">Change Hotel Reservation<span class="sr-only"> opens in a new tab</span></a>
               <a class="btn secondary" href="https://hotel.hardrock.com/riviera-maya/" target="_blank" rel="noopener noreferrer">View Resort Website<span class="sr-only"> opens in a new tab</span></a>
             </div>
+            <div class="hotel-roommate">
+              <p><strong>Need a roommate?</strong> Add your information to the <a href="https://fciemail-my.sharepoint.com/:x:/g/personal/hconnolly_floorcoveringsinternational_com/IQA_hFZL0Kz-Qa4F9c2lSKl2ATP1H0J51TRpZlLYVUON7GE?e=xbTicq" target="_blank" rel="noopener noreferrer">FCI Convention Roommate Finder<span class="sr-only"> opens in a new tab</span></a>.</p>
+            </div>
           </div>
+          <section class="hotel-policies" aria-labelledby="hotel-policies-title">
+            <div class="hotel-policy-heading">
+              <h3 id="hotel-policies-title">Hotel Policies</h3>
+              <p><strong>Please Note:</strong> The hotel sets the hotel policies outlined below, and FCI is unable to make any changes. Exceptions, if any, are at the discretion of the hotel.</p>
+            </div>
+            <ul class="hotel-policy-list">
+              <li>All individuals staying in the room must be listed on the reservation for ease at check-in. Names listed must match the passports used.</li>
+              <li>Attendees will be charged for a three-night stay at the time of booking. The remaining balance will be paid upon arrival.</li>
+              <li>If you need to cancel, cancellation must be made at least 30 days before your arrival date to avoid forfeiting the deposit. No-show penalty: full deposit. Modifications are not allowed within 30 days of arrival.</li>
+              <li>Children's rates will be paid at check-in. They will not be calculated online because each child's age must be verified on site during check-in.</li>
+            </ul>
+          </section>
           <figure class="hotel-photo">
             <picture>
               <source
@@ -2745,18 +2892,27 @@
               <div>
                 <h3>Main Stage and Awards Banquet</h3>
                 <ul class="schedule-slots">
-                  <li><span class="schedule-time">8:00 AM–3:00 PM</span><span>Main Stage Keynotes and Breakout Sessions</span></li>
+                  <li>
+                    <span class="schedule-time">8:00 AM–3:00 PM</span>
+                    <div class="schedule-session">
+                      <span>Main Stage Keynotes and Breakout Sessions</span>
+                      <div class="keynote-feature">
+                        <img class="speaker-thumb" src="assets/speakers/daymond-john.jpg" width="300" height="400" loading="lazy" decoding="async" alt="Daymond John" />
+                        <div class="keynote-copy">
+                          <span class="event-kicker">Featured Keynote: Daymond John</span>
+                          <p class="keynote-title">Daymond John's 5 Shark Points: Fundamentals for Success in Business and Life.</p>
+                          <div class="speaker-actions">
+                            <button class="btn text" type="button" data-speaker-modal="daymond">View Speaker Bio</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
                   <li><span class="schedule-time">3:00–5:30 PM</span><span>Networking Pool Time</span></li>
                   <li><span class="schedule-time">6:00–7:00 PM</span><span>Awards Banquet Cocktail Reception</span></li>
                   <li><span class="schedule-time">7:00–10:00 PM</span><span>Awards Banquet <small class="schedule-note">Dinner is provided at this event.</small></span></li>
                 </ul>
-                <span class="event-kicker">Featured Keynote: Daymond John</span>
-                <p>Daymond John's 5 Shark Points: Fundamentals for Success in Business and Life.</p>
-                <div class="speaker-actions">
-                  <button class="btn text" type="button" data-speaker-modal="daymond">View Speaker Bio</button>
-                </div>
               </div>
-              <img class="speaker-thumb" src="assets/speakers/daymond-john.jpg" width="300" height="400" loading="lazy" decoding="async" alt="Daymond John" />
             </article>
             <article class="event-row" role="listitem">
               <time class="event-date" datetime="2027-02-04">Thu, Feb 4</time>
