@@ -33,7 +33,7 @@ This is the operational registration home for the 2027 FCI Convention at Hard Ro
 - Contact must therefore use truthful email-draft language with a visible address and copy fallback unless a real endpoint is separately authorized.
 - Registration copy may explain how users recognize the external confirmation, but a link click must never be labeled as a completed submission.
 - Published fees, policies, eligibility language, deadlines, speaker claims, and hotel terms must come from the existing approved content or another verified source.
-- The early-bird deadline is currently published as October 16. Its year and exact boundary have not been verified and must not be invented.
+- Matthew approved the early-bird deadline as midnight at the end of October 23 on September 8, 2026. Both convention and hotel registration must be completed by that deadline; Standard pricing begins October 24. No time zone was specified, so do not invent one.
 - Preserve the existing role-specific Jotform URLs, hotel group URL, event dates, fee amounts, policy language, and factual FAQ content unless an approved source changes them.
 - The page must remain useful without motion, hover, a configured email client, or a fast connection.
 - Routine raster imagery must be responsive and bandwidth-aware, with intrinsic dimensions and truthful `sizes`; full JPEG originals are reserved for explicit enlargement or fallback.
