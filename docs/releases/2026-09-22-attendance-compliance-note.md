@@ -9,7 +9,7 @@ Matthew Judy supplied and authorized publication of this exact replacement for t
 
 The paragraph replaces the prior statement about sending at least one person and receiving a $1,999 convention contribution charge. The supplied wording, including “least one” and the absence of a final period, is preserved exactly. The disclosure heading and native expand/collapse behavior remain unchanged.
 
-The separate **Fee and Attendance Reminder** still says “No Branch Attendee: $1,999 charge and out of compliance.” [Issue #44](https://github.com/matthewjudy/fci-convention-website/issues/44) tracks confirmation of that separate policy; this request does not establish a fee repeal.
+At the time of this release, the separate **Fee and Attendance Reminder** still said “No Branch Attendee: $1,999 charge and out of compliance.” [Issue #44](https://github.com/matthewjudy/fci-convention-website/issues/44) tracked confirmation of that separate policy; this request did not establish a fee repeal. Matthew subsequently authorized aligning that reminder with the owner-attendance requirement; see the [follow-up release record](2026-09-22-owner-attendance-reminder.md).
 
 ## Release Verification
 
