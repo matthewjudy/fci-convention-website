@@ -775,6 +775,14 @@
         padding: 24px 28px 0;
       }
 
+      .form-shell.vendor-selected .registration-guidance {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .form-shell.vendor-selected .registration-briefing {
+        display: none;
+      }
+
       .registration-briefing {
         border: 1px solid rgba(233, 95, 69, 0.32);
         border-radius: var(--radius);
@@ -1038,59 +1046,6 @@
       .handoff-note summary:focus-visible {
         outline: 3px solid var(--deep-navy);
         outline-offset: 3px;
-      }
-
-      .sponsorship-card {
-        max-width: 1100px;
-        margin-top: 28px;
-        border: 1px solid var(--line-strong);
-        border-radius: var(--radius);
-        padding: 24px;
-        background: var(--white);
-        box-shadow: var(--shadow-rest);
-      }
-
-      .sponsorship-summary {
-        display: flex;
-        min-height: 44px;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 10px 14px;
-        color: var(--navy);
-        cursor: pointer;
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 21px;
-        font-weight: 900;
-      }
-
-      .sponsorship-card[open] > .sponsorship-summary {
-        margin-bottom: 18px;
-      }
-
-      .sponsorship-content {
-        display: grid;
-        gap: 18px;
-      }
-
-      .sponsorship-label {
-        display: inline-flex;
-        min-height: 28px;
-        align-items: center;
-        border-radius: 999px;
-        padding: 4px 10px;
-        background: #fff3ee;
-        color: #623126;
-        font-size: 12px;
-        font-weight: 950;
-      }
-
-      .sponsorship-content > p {
-        max-width: 72ch;
-        color: var(--muted);
-      }
-
-      .sponsorship-card .registration-actions {
-        margin-bottom: 0;
       }
 
       .contact-section {
@@ -2354,10 +2309,6 @@
           padding: 14px 16px;
         }
 
-        .sponsorship-card {
-          padding: 20px 16px;
-        }
-
         .jotform-frame,
         .jotform-frame iframe {
           min-height: 620px;
@@ -2772,10 +2723,6 @@
                 <div class="registration-intro">
                   <h3 id="vendor-registration-title" tabindex="-1">Vendor Registration</h3>
                   <p>Use this form for each vendor or supplier attendee who needs a badge.</p>
-                  <p><a href="#vendor-sponsorship">Looking for Diamond Tier Sponsorship?</a></p>
-                </div>
-                <div class="registration-actions">
-                  <a class="btn text" href="https://form.jotform.com/262185864037160" target="_blank" rel="noopener noreferrer">Open Vendor Form in a New Tab<span class="sr-only"> opens in a new tab</span></a>
                 </div>
                 <details class="embedded-form-disclosure">
                   <summary>
@@ -2787,37 +2734,10 @@
                       <p data-jotform-status-text>Loading Vendor Registration…</p>
                       <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
                     </div>
-                    <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
+                    <noscript><p>JavaScript is disabled. <a href="https://form.jotform.com/262185864037160" target="_blank" rel="noopener noreferrer">Open Vendor Registration directly</a>.</p></noscript>
                   </div>
                 </details>
               </div>
-
-              <details class="sponsorship-card" id="vendor-sponsorship">
-                <summary class="sponsorship-summary">
-                  <span>Diamond Tier Sponsorship Intake</span>
-                  <span class="sponsorship-label">Does Not Register Attendees</span>
-                </summary>
-                <div class="sponsorship-content">
-                  <p>This sponsorship intake does not create attendee badges or process payment. Complete Vendor Registration separately for every vendor or supplier attendee who needs a badge.</p>
-                  <div class="registration-actions">
-                    <a class="btn text" href="#panel-vendor" data-registration-tab-target="tab-vendor">Choose Vendor Registration</a>
-                    <a class="btn text" href="https://form.jotform.com/260975696840069" target="_blank" rel="noopener noreferrer">Open Sponsorship Intake in a New Tab<span class="sr-only"> opens in a new tab</span></a>
-                  </div>
-                  <details class="embedded-form-disclosure">
-                    <summary>
-                      <span class="embedded-form-title">Open Sponsorship Intake on This Page</span>
-                      <span class="embedded-form-hint">The embedded Jotform loads only when you open it.</span>
-                    </summary>
-                    <div class="jotform-frame" data-jotform-form="260975696840069" data-jotform-title="2027 Convention Diamond Tier Vendor Signup">
-                      <div class="jotform-status">
-                        <p data-jotform-status-text>Loading Diamond Tier Sponsorship Intake…</p>
-                        <button class="btn text jotform-retry" type="button" data-jotform-retry hidden>Retry Embedded Form</button>
-                      </div>
-                      <noscript><p>JavaScript is required for the embedded form. Use the new-tab link above instead.</p></noscript>
-                    </div>
-                  </details>
-                </div>
-              </details>
             </section>
           </div>
         </div>
@@ -3343,9 +3263,6 @@
       const registrationFormAnnouncement = document.querySelector("#registration-form-announcement");
       const tabs = Array.from(registrationFormShell?.querySelectorAll("[role='tab']") || []);
       const panels = Array.from(registrationFormShell?.querySelectorAll("[role='tabpanel']") || []);
-      const sponsorshipDetails = document.querySelector("#vendor-sponsorship");
-      const sponsorshipOpeners = Array.from(document.querySelectorAll("a[href='#vendor-sponsorship']"));
-      const registrationTabTargets = Array.from(document.querySelectorAll("[data-registration-tab-target]"));
       const embeddedFormDetails = Array.from(document.querySelectorAll(".embedded-form-disclosure"));
       const floatingTop = document.querySelector(".floating-top");
 
@@ -3570,7 +3487,7 @@
         host.removeAttribute("aria-busy");
       };
 
-      const markJotformFailure = (host, frame, message = "The embedded form could not load. Use the new-tab link above or retry it here.") => {
+      const markJotformFailure = (host, frame, message) => {
         if (!host) return;
         const formId = host.dataset.jotformForm;
         if (frame && formId && mountedJotformFrames.get(formId) !== frame) return;
@@ -3581,9 +3498,13 @@
         host.classList.add("has-error");
         const status = host.querySelector("[data-jotform-status-text]");
         const retry = host.querySelector("[data-jotform-retry]");
-        if (status) status.textContent = message;
+        const isVendorForm = formId === "262185864037160";
+        const recoveryMessage = message || (isVendorForm
+          ? "The embedded form could not load. Retry it or contact the Convention Team using the link in the guidance above."
+          : "The embedded form could not load. Use the new-tab link above or retry it here.");
+        if (status) status.textContent = recoveryMessage;
         if (retry) retry.hidden = false;
-        announceJotformStatus(host, message);
+        announceJotformStatus(host, recoveryMessage);
         host.removeAttribute("aria-busy");
       };
 
@@ -3610,10 +3531,13 @@
           frame.style.minHeight = `${numericValue}px`;
           formConfirmedReady = true;
         } else if (action === "collapseErrorPage") {
+          const isVendorForm = frame.closest("[data-jotform-form]")?.dataset.jotformForm === "262185864037160";
           markJotformFailure(
             frame.closest("[data-jotform-form]"),
             frame,
-            "Jotform reported a loading problem. Use the new-tab link above or retry the embedded form."
+            isVendorForm
+              ? "Jotform reported a loading problem. Retry the embedded form or contact the Convention Team using the link in the guidance above."
+              : "Jotform reported a loading problem. Use the new-tab link above or retry the embedded form."
           );
           return;
         } else if (action === "scrollIntoView") {
@@ -3679,10 +3603,13 @@
           host.appendChild(frame);
 
           const readyTimer = window.setTimeout(() => {
+            const isVendorForm = formId === "262185864037160";
             markJotformFailure(
               host,
               frame,
-              "The embedded form did not confirm it was ready. Use the new-tab link above or retry the embedded form."
+              isVendorForm
+                ? "The embedded form did not confirm it was ready. Retry it or contact the Convention Team using the link in the guidance above."
+                : "The embedded form did not confirm it was ready. Use the new-tab link above or retry the embedded form."
             );
           }, 45000);
           jotformReadyTimers.set(frame, readyTimer);
@@ -3725,6 +3652,7 @@
             item.setAttribute("aria-selected", String(isActive));
             item.setAttribute("tabindex", isActive ? "0" : "-1");
           });
+          registrationFormShell?.classList.toggle("vendor-selected", tab.id === "tab-vendor");
           panels.forEach((panel) => {
             const isActive = panel.id === tab.getAttribute("aria-controls");
             panel.classList.toggle("active", isActive);
@@ -3769,26 +3697,6 @@
           const nextTab = tabs[keyActions[event.key]];
           nextTab.focus();
           void activateTab(nextTab);
-        });
-      });
-
-      registrationTabTargets.forEach((link) => {
-        link.addEventListener("click", (event) => {
-          const tab = document.querySelector(`#${link.dataset.registrationTabTarget}`);
-          if (!tab || !tabs.includes(tab)) return;
-          event.preventDefault();
-          const panel = document.querySelector(`#${tab.getAttribute("aria-controls")}`);
-          const heading = panel?.querySelector("h3");
-          activateTab(tab).then(() => {
-            panel?.scrollIntoView({ block: "start" });
-            requestAnimationFrame(() => heading?.focus({ preventScroll: true }));
-          });
-        });
-      });
-
-      sponsorshipOpeners.forEach((link) => {
-        link.addEventListener("click", () => {
-          sponsorshipDetails.open = true;
         });
       });
 

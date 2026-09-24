@@ -265,7 +265,7 @@ Desktop compositions may use two or three columns when comparison helps: hero co
 
 Intentional horizontal movement is confined to the resort-photo rail; the document itself must keep `scrollWidth === innerWidth` at 320px, 390px, intermediate widths, and the 720px reflow proxy.
 
-**The Operational-First Rule.** Fees, role selection, registration recovery, and hotel follow-through appear before galleries or optional sponsorship details.
+**The Operational-First Rule.** Fees, role selection, registration recovery, and hotel follow-through appear before galleries.
 
 **The Safe-Area Rule.** Full-bleed decorative media may extend into device insets. Text, controls, dialog actions, sticky navigation, and fixed controls use the greater of the base gutter or the relevant `env(safe-area-inset-*)` clearance and remain inside the safe content box.
 
@@ -319,11 +319,11 @@ The sticky navy header carries the official tertiary FCI logo and exactly five p
 
 ### Registration Tabs
 
-Three tabs represent attendee badge roles only. The selected tab is white with dark teal text and a coral inset bar; hover/focus uses navy with lime confirmation. Arrow keys, Home, and End move the single active tab stop. Sponsorship remains a separate Vendor disclosure labeled “Does Not Register Attendees.”
+Three tabs represent attendee badge roles only. The selected tab is white with dark teal text and a coral inset bar; hover/focus uses navy with lime confirmation. Arrow keys, Home, and End move the single active tab stop. Vendor omits the franchisee Fee and Attendance Reminder, leaving Before You Begin in the left column. Sponsorship content is not part of this registration surface.
 
 ### Embedded Form State
 
-Every form presents its direct new-tab action before the embed. Loading reserves space and announces the specific form. Readiness is accepted only from a trusted Jotform sizing message. Failure removes the unusable iframe and provides a compact Retry Embedded Form action without removing the direct fallback. No-JavaScript mode exposes every direct path and never reports a busy state.
+Owner and Employee present a direct new-tab action before the embed. Vendor uses the embedded form without a normal new-tab action, per the approved September 24, 2026 cleanup. Loading reserves space and announces the specific form. Readiness is accepted only from a trusted Jotform sizing message. Failure removes the unusable iframe and provides a compact Retry Embedded Form action. Guidance must refer only to controls available for the selected role. No-JavaScript mode exposes every direct path and never reports a busy state.
 
 ### Fact Panel
 
@@ -344,7 +344,7 @@ The footer follows the corporate FCI hierarchy: official identity and independen
 - **Do** lead visitors from fee understanding to one form per attendee, then to the separate hotel step.
 - **Do** use the approved FCI tertiary logo, verified prior-convention imagery, and approved speaker and resort imagery at their natural aspect ratios.
 - **Do** keep instructional copy within the 65–75 character reading measure and maintain document-level reflow at every supported width.
-- **Do** keep direct-form fallbacks visible before cross-origin embeds and make loading, failure, retry, and no-JavaScript states truthful.
+- **Do** keep Owner and Employee direct-form fallbacks visible before cross-origin embeds and make every role’s loading, failure, retry, and no-JavaScript states truthful.
 - **Do** preserve 44px controls, visible focus, WCAG AA text contrast, and the reduced-motion alternative in every new component.
 - **Do** use responsive media candidates for routine views while retaining originals only when the lightbox or fallback requires them.
 
