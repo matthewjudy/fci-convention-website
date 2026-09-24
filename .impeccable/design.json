@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-17T13:23:43Z",
+  "generatedAt": "2026-09-24T19:43:27.772Z",
   "title": "Design System: 2027 FCI Convention Registration",
   "extensions": {
     "colorMeta": {
@@ -194,7 +194,7 @@
       "name": "Text Action",
       "kind": "button",
       "refersTo": "button-text",
-      "description": "A quiet but accessible direct-form or recovery action.",
+      "description": "A quiet, accessible direct-form action for Owner and Employee registration or recovery.",
       "html": "<a class=\"ds-text-action\" href=\"#\">Open Form in a New Tab</a>",
       "css": ".ds-text-action { display:inline-flex; min-height:44px; align-items:center; padding:0 2px; color:var(--teal-dark,#00636a); font:900 14px/1.2 Aptos,'Segoe UI',Arial,sans-serif; text-decoration:underline; text-underline-offset:4px; } .ds-text-action:hover,.ds-text-action:focus-visible { color:var(--deep-navy,#0b2235); } .ds-text-action:focus-visible { outline:3px solid var(--accessible-focus-coral,#cf4b36); outline-offset:3px; }"
     },
@@ -226,7 +226,7 @@
       "name": "Embedded Form Recovery",
       "kind": "custom",
       "refersTo": "notice",
-      "description": "A compact, truthful cross-origin failure state with direct and retry recovery.",
+      "description": "Owner and Employee form failure state with direct-link and retry recovery.",
       "html": "<section class=\"ds-form-recovery\" aria-label=\"Registration Form Recovery\"><p role=\"status\">The embedded form could not load.</p><a href=\"#\">Open Form in a New Tab</a><button>Retry Embedded Form</button></section>",
       "css": ".ds-form-recovery { display:grid; min-height:180px; place-items:center; align-content:center; gap:12px; border:1px solid var(--strong-divider,#cdd9d6); border-radius:var(--radius,8px); padding:24px; background:#f5fbfb; color:var(--navy,#12314a); font:800 14px/1.4 Aptos,'Segoe UI',Arial,sans-serif; text-align:center; } .ds-form-recovery p { margin:0; } .ds-form-recovery a,.ds-form-recovery button { display:inline-flex; min-height:44px; align-items:center; color:var(--teal-dark,#00636a); font-weight:900; text-decoration:underline; text-underline-offset:4px; } .ds-form-recovery button { border:0; background:transparent; cursor:pointer; } .ds-form-recovery a:focus-visible,.ds-form-recovery button:focus-visible { outline:3px solid var(--accessible-focus-coral,#cf4b36); outline-offset:3px; }"
     },
@@ -237,6 +237,22 @@
       "description": "A media-independent inverse panel for verified event facts.",
       "html": "<aside class=\"ds-fact-panel\"><dl><div><dt>Dates</dt><dd>Tuesday, February 2 – Friday, February 5, 2027</dd></div><div><dt>Hotel</dt><dd>Hard Rock Riviera Maya</dd></div></dl></aside>",
       "css": ".ds-fact-panel { border:1px solid rgba(255,255,255,.28); border-radius:var(--radius,8px); padding:26px; background:var(--deep-navy,#0b2235); color:#fff; font:700 16px/1.4 Aptos,'Segoe UI',Arial,sans-serif; } .ds-fact-panel dl { display:grid; gap:17px; margin:0; } .ds-fact-panel dt { color:var(--lime,#8cc63f); font-size:12px; font-weight:950; letter-spacing:.12em; text-transform:none; } .ds-fact-panel dd { margin:4px 0 0; color:#fff; font-weight:900; }"
+    },
+    {
+      "name": "Vendor Preparation Guidance",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Full-width Riviera Sky preparation panel when Vendor is selected; the franchisee fee reminder is hidden.",
+      "html": "<aside class=\"ds-vendor-guidance\"><h3>Before You Begin</h3><ul><li>Complete one role-specific form for every attendee who needs a badge.</li><li>Have badge and contact details ready.</li></ul><details><summary>How Registration Works</summary><p>Registration is complete only when the active form reports success.</p></details></aside>",
+      "css": ".ds-vendor-guidance { display:grid; gap:10px; border:1px solid rgba(0,127,134,.3); border-radius:var(--radius,8px); padding:18px 20px; background:var(--sky,#d9f1f3); color:var(--navy,#12314a); font:400 16px/1.55 Aptos,'Segoe UI',Arial,sans-serif; } .ds-vendor-guidance h3 { margin:0; font-size:21px; } .ds-vendor-guidance ul { display:grid; gap:6px; margin:0; padding-inline-start:1.25em; } .ds-vendor-guidance details { border-top:1px solid rgba(0,127,134,.24); padding-top:8px; } .ds-vendor-guidance summary { display:flex; min-height:44px; align-items:center; color:var(--teal-dark,#00636a); cursor:pointer; font-weight:900; } .ds-vendor-guidance summary:focus-visible { outline:3px solid var(--deep-navy,#0b2235); outline-offset:3px; }"
+    },
+    {
+      "name": "Vendor Form Recovery",
+      "kind": "custom",
+      "refersTo": "notice",
+      "description": "Vendor embed failure state with retry and Convention Team guidance, without a normal new-tab action.",
+      "html": "<section class=\"ds-vendor-recovery\" aria-label=\"Vendor Registration Recovery\"><p role=\"status\">The embedded form could not load. Retry it or contact the Convention Team using the link in the guidance above.</p><button type=\"button\">Retry Embedded Form</button></section>",
+      "css": ".ds-vendor-recovery { display:grid; min-height:180px; place-items:center; align-content:center; gap:12px; border:1px solid var(--strong-divider,#cdd9d6); border-radius:var(--radius,8px); padding:24px; background:#f5fbfb; color:var(--navy,#12314a); font:800 14px/1.4 Aptos,'Segoe UI',Arial,sans-serif; text-align:center; } .ds-vendor-recovery p { margin:0; } .ds-vendor-recovery button { display:inline-flex; min-height:44px; align-items:center; border:0; background:transparent; color:var(--teal-dark,#00636a); cursor:pointer; font-weight:900; text-decoration:underline; text-underline-offset:4px; } .ds-vendor-recovery button:hover { color:var(--deep-navy,#0b2235); } .ds-vendor-recovery button:focus-visible { outline:3px solid var(--accessible-focus-coral,#cf4b36); outline-offset:3px; }"
     }
   ],
   "narrative": {
@@ -246,30 +262,29 @@
       "Registration-first hierarchy with fees, attendee forms, and hotel follow-through kept explicit.",
       "Deep navy structure, warm paper reading surfaces, and rare high-energy lime actions.",
       "Editorial serif headlines paired with a practical system sans-serif for operations.",
-      "Approved FCI, verified prior-convention, speaker, and resort assets instead of invented visual proof.",
+      "Approved FCI, convention, speaker, and resort assets instead of invented visual proof.",
       "Responsive behavior that stays complete from 320px through wide desktop and at 200% reflow.",
       "Motion that supports state but disappears cleanly when reduced motion is requested."
     ],
     "rules": [
       { "name": "The Registration Color Rule", "body": "Lime identifies the next primary action; do not spend it on general decoration.", "section": "colors" },
-      { "name": "The Signal Rule", "body": "Warm Signal Coral marks selection and policy emphasis. Accessible Focus Coral marks focus on light surfaces; Warm Signal Coral or white may mark focus on navy and photographic surfaces.", "section": "colors" },
-      { "name": "The Focus Contrast Rule", "body": "A focus indicator contrasts at least 3:1 with the immediately adjacent surface and never relies on color alone.", "section": "colors" },
+      { "name": "The Signal Rule", "body": "Warm Signal Coral marks selection and policy emphasis. Accessible Focus Coral marks focus on light surfaces; Warm Signal Coral or white may mark focus on navy and photographic surfaces. Normal-size text on light surfaces uses the darker teal, navy, or policy-ink role.", "section": "colors" },
+      { "name": "The Focus Contrast Rule", "body": "A focus indicator must contrast at least 3:1 with the immediately adjacent surface and may not rely on color alone. The light-surface focus coral is `#cf4b36`; it clears 3:1 against white, paper, Riviera Sky, registration navy, and midnight navy.", "section": "colors" },
       { "name": "The Two-Voice Rule", "body": "Serif type establishes destination and occasion; sans-serif type carries every task, status, and decision.", "section": "typography" },
       { "name": "The Sentence Rule", "body": "Fragments and interface labels use Title Case; complete sentences retain sentence case and normal punctuation.", "section": "typography" },
-      { "name": "The Operational-First Rule", "body": "Fees, role selection, registration recovery, and hotel follow-through appear before galleries or optional sponsorship details.", "section": "layout" },
-      { "name": "The Safe-Area Rule", "body": "Full-bleed decorative media may extend into device insets; essential text, controls, sticky navigation, dialogs, and fixed controls stay inside the safe content box.", "section": "layout" },
-      { "name": "The Responsive Media Rule", "body": "Routine images use responsive WebP candidates, intrinsic dimensions, and truthful sizes; full JPEGs are fallback or explicit-enlargement sources.", "section": "layout" },
+      { "name": "The Operational-First Rule", "body": "Fees, role selection, registration recovery, and hotel follow-through appear before galleries.", "section": "layout" },
+      { "name": "The Safe-Area Rule", "body": "Full-bleed decorative media may extend into device insets. Text, controls, dialog actions, sticky navigation, and fixed controls use the greater of the base gutter or the relevant `env(safe-area-inset-*)` clearance and remain inside the safe content box.", "section": "layout" },
+      { "name": "The Responsive Media Rule", "body": "Routine images use available 480/960/1440 WebP candidates, intrinsic dimensions, and a `sizes` expression that mirrors the rendered column. Full JPEGs are fallback or explicit-enlargement sources. Faces, logos, and meaningful action remain inside the crop shared by shipped aspect ratios.", "section": "layout" },
       { "name": "The Neutral Elevation Rule", "body": "Shadows are black with transparency and a visible vertical offset; brand-colored glows and zero-offset halos do not belong in this system.", "section": "elevation" },
       { "name": "The Reduced-Motion Rule", "body": "Reduced motion keeps state, focus, and hierarchy visible while removing scroll animation, image scaling, lifts, and transition timing.", "section": "elevation" },
-      { "name": "The Motion Contrast Rule", "body": "Scroll choreography never fades or filters text and controls that remain readable or interactive below WCAG AA at any intermediate frame.", "section": "elevation" },
-      { "name": "The Photo Provenance Rule", "body": "Public convention-photo labels describe visible scenes year-neutrally unless a capture year is materially relevant and independently verified.", "section": "imagery" },
+      { "name": "The Motion Contrast Rule", "body": "Scroll choreography may transform decorative media or reposition an already-visible surface, but it never fades or filters text and controls that remain readable or interactive. Every intermediate frame preserves WCAG AA; reduced motion is fully legible and immediate.", "section": "elevation" },
       { "name": "The One Silhouette Rule", "body": "Use the 8px surface family for cards, notices, forms, images, and dialogs; reserve circles and pills for controls whose compact function earns them.", "section": "shapes" }
     ],
     "dos": [
       "Do lead visitors from fee understanding to one form per attendee, then to the separate hotel step.",
       "Do use the approved FCI tertiary logo, verified prior-convention imagery, and approved speaker and resort imagery at their natural aspect ratios.",
       "Do keep instructional copy within the 65–75 character reading measure and maintain document-level reflow at every supported width.",
-      "Do keep direct-form fallbacks visible before cross-origin embeds and make loading, failure, retry, and no-JavaScript states truthful.",
+      "Do keep Owner and Employee direct-form fallbacks visible before cross-origin embeds and make every role’s loading, failure, retry, and no-JavaScript states truthful.",
       "Do preserve 44px controls, visible focus, WCAG AA text contrast, and the reduced-motion alternative in every new component.",
       "Do use responsive media candidates for routine views while retaining originals only when the lightbox or fallback requires them."
     ],
@@ -279,7 +294,7 @@
       "Don't use lime as ambient decoration, coral as normal-size text on light surfaces, or brand-colored shadows as depth.",
       "Don't add autoplaying or eagerly loaded video; playback remains explicit, desktop-only, Save-Data-aware, and disabled for reduced motion.",
       "Don't place essential fees, role choice, recovery, or hotel continuity behind decorative proof or a gallery.",
-      "Don't assign a capture year to convention photography from a filename, caption history, or assumption.",
+      "Don't assign a capture year to convention photography from a filename, caption history, or assumption; use a year only when it is materially relevant and independently verified.",
       "Don't introduce generic conference claims, fabricated testimonials, decorative icons, gradients in text, or a dark-mode contract without product approval."
     ]
   }
