@@ -22,7 +22,7 @@ This is the operational registration home for the 2027 FCI Convention at Hard Ro
 
 - The convention runs Tuesday, February 2 through Friday, February 5, 2027 at Hard Rock Riviera Maya.
 - Franchise owner, employee, and vendor badge registrations are separate public Jotform workflows. One form is required per badge, and hotel booking is explicitly separate.
-- Diamond Tier vendor signup is a sponsorship intake, not attendee badge registration.
+- Vendor Step 1 shows attendee preparation and the embedded badge-registration form. Per Matthew’s September 24, 2026 direction, it omits the franchisee fee/attendance reminder, the normal new-tab form link, and Diamond Tier sponsorship content; Owner and Employee retain their reminder.
 - Hotel reservations use the Hard Rock group flow for “FCI 2027 Annual HRRM,” group code `270122FCIA`.
 - External registration and hotel pages open cross-origin. This static site can observe an outbound click but cannot verify a submitted registration or completed hotel booking without an approved redirect, webhook, API, or reconciliation feed.
 
